@@ -1,0 +1,30 @@
+name: Feature request
+description: Suggest a new feature or improvement.
+labels: ["enhancement", "needs-triage"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What are you trying to do? What's blocking you today?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: What would you like stackit-nuke to do? CLI shape, config shape, behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope
+      options:
+        - label: This is for a new resource type
+        - label: This affects the CLI / config schema
+        - label: This affects the engine (libnuke) — likely upstream

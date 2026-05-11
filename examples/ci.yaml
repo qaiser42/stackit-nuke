@@ -1,0 +1,38 @@
+# Non-interactive config for scheduled CI cleanup.
+#
+# Auth comes from STACKIT_SERVICE_ACCOUNT_KEY_PATH or STACKIT_SERVICE_ACCOUNT_TOKEN
+# in the environment — no path baked into the config.
+#
+# Pair with these flags in the runner:
+#   stackit-nuke run \
+#     --config examples/ci.yaml \
+#     --no-dry-run \
+#     --no-prompt \
+#     --prompt-delay 30
+#
+# --prompt-delay 30 gives operators a 30-second window to abort the job
+# before deletion begins.
+
+regions:
+  - eu01
+
+project-ids:
+  - 11111111-1111-1111-1111-111111111111
+
+blocklist:
+  - 99999999-9999-9999-9999-999999999999
+
+resource-types:
+  excludes:
+    - DNSZone
+    - SKECluster   # SKE clusters are slow + expensive to recreate
+
+accounts:
+  "11111111-1111-1111-1111-111111111111":
+    filters:
+      ComputeServer:
+        # Keep anything created in the last 24h — let in-flight CI runs finish.
+        - property: CreationDate
+          value: "24h"
+          type: dateOlderThan
+          invert: true

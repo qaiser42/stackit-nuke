@@ -1,0 +1,9 @@
+# Copy to Pulumi.dev.yaml and fill in your project ID, then:
+#   pulumi stack init dev
+#   pulumi up
+config:
+  stackit-nuke-dev-infra:projectId: b12db9b4-914b-4g08-a988-ae348c2a034d
+  stackit-nuke-dev-infra:region: eu01
+  stackit-nuke-dev-infra:availabilityZone: eu01-1
+  stackit-nuke-dev-infra:machineType: g2i.1
+  stackit-nuke-dev-infra:serverCount: "2"

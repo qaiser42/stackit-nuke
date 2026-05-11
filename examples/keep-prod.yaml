@@ -1,0 +1,47 @@
+# Production-protective config.
+# - blocklist refuses to nuke the prod project ID, ever.
+# - filters keep anything tagged env=prod or named keep-*.
+# - DNSZone is excluded globally so DNS records survive.
+
+regions:
+  - eu01
+  - eu02
+
+project-ids:
+  - 11111111-1111-1111-1111-111111111111   # staging — target
+
+blocklist:
+  - 99999999-9999-9999-9999-999999999999   # prod — never touch
+
+auth:
+  service-account-key-path: ~/.stackit/sa-key.json
+
+resource-types:
+  excludes:
+    - DNSZone
+
+presets:
+  protect-prod-tagged:
+    filters:
+      ComputeServer:
+        - property: "tag:env"
+          value: prod
+      ObjectStorageBucket:
+        - property: "tag:env"
+          value: prod
+      PostgresFlexInstance:
+        - property: "tag:env"
+          value: prod
+
+accounts:
+  "11111111-1111-1111-1111-111111111111":
+    presets:
+      - protect-prod-tagged
+    filters:
+      ComputeServer:
+        - property: Name
+          value: "keep-*"
+          type: glob
+      Network:
+        - property: Name
+          value: shared-vpc

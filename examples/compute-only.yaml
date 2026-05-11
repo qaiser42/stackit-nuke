@@ -1,0 +1,19 @@
+# Delete only IaaS compute resources. Skip everything else.
+# Useful for tearing down test instances without touching networks,
+# object storage, managed databases, DNS, etc.
+
+regions:
+  - eu01
+
+project-ids:
+  - 11111111-1111-1111-1111-111111111111
+
+auth:
+  service-account-key-path: ~/.stackit/sa-key.json
+
+resource-types:
+  includes:
+    - ComputeServer
+    - ComputeVolume
+    - ComputeSnapshot
+    - ComputeKeypair

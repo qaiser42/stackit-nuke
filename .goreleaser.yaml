@@ -1,0 +1,66 @@
+version: 2
+project_name: stackit-nuke
+dist: releases
+
+release:
+  github:
+    owner: qaiser42
+    name: stackit-nuke
+
+builds:
+  - id: default
+    main: ./
+    binary: stackit-nuke
+    env:
+      - CGO_ENABLED=0
+    goos: [linux, darwin, windows]
+    goarch: [amd64, arm64]
+    ignore:
+      - goos: windows
+        goarch: arm64
+    ldflags:
+      - -s -w
+      - -X github.com/qaiser42/stackit-nuke/pkg/common.SUMMARY={{ .Version }}
+      - -X github.com/qaiser42/stackit-nuke/pkg/common.BRANCH={{ .Branch }}
+      - -X github.com/qaiser42/stackit-nuke/pkg/common.COMMIT={{ .Commit }}
+
+archives:
+  - id: default
+    builds: [default]
+    name_template: "{{ .ProjectName }}-v{{ .Version }}-{{ .Os }}-{{ .Arch }}"
+    format_overrides:
+      - goos: windows
+        format: zip
+
+checksum:
+  name_template: checksums.txt
+
+snapshot:
+  version_template: '{{ trimprefix .Summary "v" }}-snapshot'
+
+changelog:
+  use: github
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^chore:"
+      - "^test:"
+
+sboms:
+  - artifacts: archive
+
+signs:
+  - id: cosign
+    cmd: cosign
+    signature: "${artifact}.sig"
+    certificate: "${artifact}.pem"
+    args:
+      - sign-blob
+      - "--yes"
+      - "--oidc-provider=github"
+      - "--oidc-issuer=https://token.actions.githubusercontent.com"
+      - "--output-certificate=${certificate}"
+      - "--output-signature=${signature}"
+      - "${artifact}"
+    artifacts: checksum

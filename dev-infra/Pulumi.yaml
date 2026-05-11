@@ -1,0 +1,41 @@
+name: stackit-nuke-dev-infra
+runtime: nodejs
+description: |
+  Throwaway STACKIT infrastructure for testing stackit-nuke locally.
+
+  Spins up: 1 network, 1 network interface, N servers (default 2), 1 standalone
+  volume. Use `pulumi up` to deploy, then `stackit-nuke run ...` to delete,
+  then `pulumi destroy` to clean any leftovers.
+
+config:
+  stackit-nuke-dev-infra:projectId:
+    description: STACKIT project ID to deploy into (must match config.yaml)
+  stackit-nuke-dev-infra:region:
+    description: STACKIT region
+    default: eu01
+  stackit-nuke-dev-infra:availabilityZone:
+    description: AZ for servers + volumes
+    default: eu01-1
+  stackit-nuke-dev-infra:machineType:
+    description: STACKIT machine type
+    default: g2i.1
+  stackit-nuke-dev-infra:imageId:
+    description: |
+      Optional explicit boot image ID. If empty, the image is resolved by
+      distro + version filter (see imageDistro / imageVersion). The filter
+      path is recommended because image IDs are tenant + region scoped.
+    default: ""
+  stackit-nuke-dev-infra:imageDistro:
+    description: |
+      Image distro filter when imageId is empty. Use `ubuntu` for Intel/AMD
+      flavors (g1a, g2, g2i) and `ubuntu-arm64` for ARM flavors.
+    default: ubuntu
+  stackit-nuke-dev-infra:imageVersion:
+    description: Image distro version when imageId is empty
+    default: "24.04"
+  stackit-nuke-dev-infra:imageNameRegex:
+    description: Image name regex used when imageId is empty
+    default: "^Ubuntu 24\\.04.*"
+  stackit-nuke-dev-infra:serverCount:
+    description: Number of servers to spin up
+    default: 2

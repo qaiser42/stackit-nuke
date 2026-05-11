@@ -1,0 +1,15 @@
+defaultBaseImage: cgr.dev/chainguard/static:latest
+defaultPlatforms:
+  - linux/amd64
+  - linux/arm64
+builds:
+  - id: stackit-nuke
+    main: ./
+    env:
+      - CGO_ENABLED=0
+    flags:
+      - -trimpath
+    ldflags:
+      - -s -w
+      - -X github.com/qaiser42/stackit-nuke/pkg/common.SUMMARY={{.Env.VERSION}}
+      - -X github.com/qaiser42/stackit-nuke/pkg/common.COMMIT={{.Env.COMMIT}}

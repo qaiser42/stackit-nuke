@@ -1,0 +1,85 @@
+site_name: stackit-nuke
+site_description: Remove all resources from a STACKIT project. Built on libnuke.
+site_url: https://qaiser42.github.io/stackit-nuke
+repo_name: qaiser42/stackit-nuke
+repo_url: https://github.com/qaiser42/stackit-nuke
+edit_uri: ""
+site_dir: public
+
+theme:
+  name: material
+  language: en
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: indigo
+      toggle:
+        icon: material/toggle-switch-off
+        name: Switch to light mode
+  features:
+    - navigation.indexes
+    - navigation.sections
+    - navigation.tabs
+    - toc.follow
+    - content.code.copy
+    - search.highlight
+    - search.suggest
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+  - toc:
+      permalink: true
+
+nav:
+  - Getting Started:
+      - Overview: index.md
+      - Warning: warning.md
+      - Install: install.md
+      - Authentication: auth.md
+      - Quick Start: quick-start.md
+  - Configuration:
+      - Overview: config.md
+      - Filtering: config-filtering.md
+      - Presets: config-presets.md
+  - CLI:
+      - Usage: cli.md
+  - Resources:
+      - Overview: resources/index.md
+      - ComputeServer: resources/compute-server.md
+      - ComputeVolume: resources/compute-volume.md
+      - ComputeSnapshot: resources/compute-snapshot.md
+      - ComputeKeypair: resources/compute-keypair.md
+      - Network: resources/network.md
+      - Subnet: resources/subnet.md
+      - Router: resources/router.md
+      - SecurityGroup: resources/security-group.md
+      - FloatingIP: resources/floating-ip.md
+      - ObjectStorageBucket: resources/object-storage-bucket.md
+      - ObjectStorageObject: resources/object-storage-object.md
+      - SKECluster: resources/ske-cluster.md
+      - PostgresFlexInstance: resources/postgres-flex-instance.md
+      - MongoDBFlexInstance: resources/mongodb-flex-instance.md
+      - RedisInstance: resources/redis-instance.md
+      - OpenSearchInstance: resources/opensearch-instance.md
+      - RabbitMQInstance: resources/rabbitmq-instance.md
+      - LoadBalancer: resources/load-balancer.md
+      - DNSZone: resources/dns-zone.md
+  - Development:
+      - Contributing: contributing.md
+      - Releases: releases.md

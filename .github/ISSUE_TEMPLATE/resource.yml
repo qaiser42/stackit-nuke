@@ -1,0 +1,36 @@
+name: New resource type
+description: Request support for an additional STACKIT resource.
+labels: ["resource", "enhancement", "needs-triage"]
+body:
+  - type: input
+    id: service
+    attributes:
+      label: STACKIT service
+      placeholder: "iaas, objectstorage, ske, postgresflex, dns, ..."
+    validations:
+      required: true
+  - type: input
+    id: resource
+    attributes:
+      label: Resource type
+      placeholder: "Server, Volume, Bucket, Cluster, Zone, ..."
+    validations:
+      required: true
+  - type: input
+    id: sdk
+    attributes:
+      label: SDK package
+      description: The Go SDK package that owns this resource.
+      placeholder: "github.com/stackitcloud/stackit-sdk-go/services/iaas/v2api"
+  - type: textarea
+    id: list-delete
+    attributes:
+      label: List + Delete API endpoints
+      placeholder: |
+        List:    GET    /v2/projects/{projectId}/regions/{region}/servers
+        Delete:  DELETE /v2/projects/{projectId}/regions/{region}/servers/{serverId}
+  - type: textarea
+    id: notes
+    attributes:
+      label: Dependencies / notes
+      description: Does this depend on other resources? Special preconditions before delete (detach, drain, empty)?

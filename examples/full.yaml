@@ -1,0 +1,103 @@
+# stackit-nuke example configuration.
+#
+# Copy to config.yaml and edit. Run:
+#   stackit-nuke run --config config.yaml             # dry-run (default)
+#   stackit-nuke run --config config.yaml --no-dry-run
+#
+# Full reference: https://qaiser42.github.io/stackit-nuke/config/
+
+# ---------------------------------------------------------------------------
+# STACKIT regions to scan. Use `all` to disable region filtering.
+# ---------------------------------------------------------------------------
+regions:
+  - eu01
+
+# ---------------------------------------------------------------------------
+# Allow-list of STACKIT project IDs that may be nuked. CLI cannot widen this.
+# Required.
+# ---------------------------------------------------------------------------
+project-ids:
+  - 11111111-1111-1111-1111-111111111111
+
+# Optional parent organization. Reserved for org-scoped resources.
+organization-id: 00000000-0000-0000-0000-000000000000
+
+# ---------------------------------------------------------------------------
+# Project IDs that may NEVER be nuked. The tool refuses to start if any of
+# these match. Belt-and-suspenders against fat-fingered project-ids above.
+# ---------------------------------------------------------------------------
+blocklist:
+  - 99999999-9999-9999-9999-999999999999   # production — never touch
+
+# ---------------------------------------------------------------------------
+# Authentication. CLI flags / env vars override these.
+#   --auth-file           / STACKIT_SERVICE_ACCOUNT_KEY_PATH
+#   --private-key-file    / STACKIT_PRIVATE_KEY_PATH
+#   --token               / STACKIT_SERVICE_ACCOUNT_TOKEN
+# ---------------------------------------------------------------------------
+auth:
+  service-account-key-path: ~/.stackit/sa-key.json
+  # private-key-path: ~/.stackit/private.pem
+  # token: ""
+
+# ---------------------------------------------------------------------------
+# Resource type include/exclude (global). `stackit-nuke resource-types`
+# prints all registered names.
+# ---------------------------------------------------------------------------
+resource-types:
+  # Only consider these — leave empty to consider all registered types.
+  # includes:
+  #   - ComputeServer
+  #   - ComputeVolume
+
+  # Always skip these.
+  excludes:
+    - DNSZone
+
+# ---------------------------------------------------------------------------
+# Reusable filter sets. Reference from accounts.<id>.presets.
+# ---------------------------------------------------------------------------
+presets:
+  protect-shared:
+    filters:
+      Network:
+        - property: Name
+          value: shared-vpc
+      ObjectStorageBucket:
+        - property: Name
+          value: "shared-*"
+          type: glob
+
+# ---------------------------------------------------------------------------
+# Per-project configuration. Keyed by project ID. Filters mark resources as
+# INELIGIBLE for deletion — anything not matched gets deleted.
+# ---------------------------------------------------------------------------
+accounts:
+  "11111111-1111-1111-1111-111111111111":
+    presets:
+      - protect-shared
+    filters:
+      ComputeServer:
+        - property: Name
+          value: "keep-*"
+          type: glob
+        - property: "tag:env"
+          value: prod
+      ObjectStorageBucket:
+        - property: Name
+          value: "logs-2024-*"
+          type: glob
+
+# ---------------------------------------------------------------------------
+# Per-resource settings (optional). Toggle resource-specific behaviors.
+# ---------------------------------------------------------------------------
+# settings:
+#   ObjectStorageBucket:
+#     EmptyBeforeDelete: true
+
+# ---------------------------------------------------------------------------
+# Engine feature flags (optional). Same effect as --feature-flag on CLI.
+# ---------------------------------------------------------------------------
+# feature-flags:
+#   wait-on-dependencies: true
+#   filter-groups: true

@@ -1,0 +1,54 @@
+name: Bug report
+description: Something is broken or behaving unexpectedly.
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to file a bug report. Please redact any secrets or project IDs you don't want public.
+  - type: input
+    id: version
+    attributes:
+      label: stackit-nuke version
+      description: Output of `stackit-nuke --version`
+      placeholder: "v0.1.0"
+    validations:
+      required: true
+  - type: input
+    id: platform
+    attributes:
+      label: Platform
+      placeholder: "linux/amd64, darwin/arm64, ghcr image, ..."
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Describe the buggy behavior. Logs at `--log-level=debug` are gold.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect to happen?
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Config:
+           ```yaml
+           ...
+           ```
+        2. Run: `stackit-nuke run --config config.yaml ...`
+        3. Observe: ...
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else?
+      description: Stack traces, related issues, screenshots, etc.

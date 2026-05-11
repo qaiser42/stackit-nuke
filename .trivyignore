@@ -1,0 +1,6 @@
+# Trivy ignore file. Each line: a CVE ID, optionally with `exp:YYYY-MM-DD` and a
+# trailing comment explaining why it's accepted.
+#
+# Example:
+# CVE-2024-99999 exp:2026-12-31 # transitive in libnuke; upstream tracked at
+#                                 https://github.com/ekristen/libnuke/issues/X

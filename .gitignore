@@ -27,6 +27,22 @@ go.work.sum
 # env file
 .env
 
+# Built binaries
+/stackit-nuke
+/stackit-nuke.exe
+
+# Local config / credentials — never commit
+config.yaml
+*.sa-key.json
+
+# Build / release artifacts
+/releases/
+/dist/
+/public/
+
+# Docs build cache
+.cache/
+
 # Editor/IDE
 # .idea/
 # .vscode/

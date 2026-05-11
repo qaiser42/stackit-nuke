@@ -1,0 +1,11 @@
+# Smallest valid stackit-nuke config.
+# Nukes everything in the listed project, in the listed region.
+
+regions:
+  - eu01
+
+project-ids:
+  - 11111111-1111-1111-1111-111111111111
+
+auth:
+  service-account-key-path: ~/.stackit/sa-key.json
