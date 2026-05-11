@@ -19,9 +19,13 @@ jobs:
           go-version: "1.26"
       - uses: golangci/golangci-lint-action@v8
         with:
-          # v2.x is required because we target `go 1.26` in go.mod; older
-          # golangci-lint binaries are built with go1.24 and refuse to load.
           version: v2.5.0
+          # Build the linter from source with the runner's Go. Prebuilt
+          # golangci-lint binaries are released built with go1.25; if any
+          # file under analysis (theirs or transitive dep) needs go1.26
+          # the binary panics. `goinstall` sidesteps that by compiling the
+          # linter with the same Go we use to compile the project.
+          install-mode: goinstall
 
   test:
     runs-on: ubuntu-latest
