@@ -8,7 +8,7 @@
 
 [![ci](https://github.com/qaiser42/stackit-nuke/actions/workflows/ci.yml/badge.svg)](https://github.com/qaiser42/stackit-nuke/actions/workflows/ci.yml)
 [![release](https://github.com/qaiser42/stackit-nuke/actions/workflows/release.yml/badge.svg)](https://github.com/qaiser42/stackit-nuke/actions/workflows/release.yml)
-[![docs](https://github.com/qaiser42/stackit-nuke/actions/workflows/docs.yml/badge.svg)](https://qaiser42.github.io/stackit-nuke)
+[![docs](https://github.com/qaiser42/stackit-nuke/actions/workflows/docs.yml/badge.svg)](https://qaiser42.io/stackit-nuke)
 [![security](https://github.com/qaiser42/stackit-nuke/actions/workflows/security.yml/badge.svg)](https://github.com/qaiser42/stackit-nuke/actions/workflows/security.yml)
 [![Go Reference](https://pkg.go.dev/badge/github.com/qaiser42/stackit-nuke.svg)](https://pkg.go.dev/github.com/qaiser42/stackit-nuke)
 
@@ -60,7 +60,7 @@ stackit-nuke run --config config.yaml                 # dry run
 stackit-nuke run --config config.yaml --no-dry-run    # real
 ```
 
-Full docs: <https://qaiser42.github.io/stackit-nuke>
+Full docs: <https://qaiser42.io/stackit-nuke>
 
 ## How it works (101)
 

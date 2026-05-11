@@ -1,6 +1,6 @@
 site_name: stackit-nuke
 site_description: Remove all resources from a STACKIT project. Built on libnuke.
-site_url: https://qaiser42.github.io/stackit-nuke
+site_url: https://qaiser42.io/stackit-nuke
 repo_name: qaiser42/stackit-nuke
 repo_url: https://github.com/qaiser42/stackit-nuke
 edit_uri: ""

@@ -4,7 +4,7 @@
 #   stackit-nuke run --config config.yaml             # dry-run (default)
 #   stackit-nuke run --config config.yaml --no-dry-run
 #
-# Full reference: https://qaiser42.github.io/stackit-nuke/config/
+# Full reference: https://qaiser42.io/stackit-nuke/config/
 
 # ---------------------------------------------------------------------------
 # STACKIT regions to scan. Use `all` to disable region filtering.
