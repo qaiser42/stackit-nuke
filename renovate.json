@@ -1,0 +1,47 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended", ":semanticCommits"],
+  "timezone": "Europe/Berlin",
+  "schedule": ["before 6am on monday"],
+  "labels": ["dependencies"],
+  "rangeStrategy": "bump",
+  "platformAutomerge": true,
+  "packageRules": [
+    {
+      "description": "Auto-merge all GitHub Actions updates",
+      "matchManagers": ["github-actions"],
+      "automerge": true,
+      "automergeType": "pr"
+    },
+    {
+      "description": "Auto-merge patch-level updates across all managers",
+      "matchUpdateTypes": ["patch", "pin", "digest"],
+      "automerge": true,
+      "automergeType": "pr"
+    },
+    {
+      "description": "Group all minor + patch Go module updates into one PR per week",
+      "matchManagers": ["gomod"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "go modules (non-major)"
+    },
+    {
+      "description": "Don't auto-merge libnuke — engine bumps deserve a human glance",
+      "matchPackageNames": ["github.com/ekristen/libnuke"],
+      "automerge": false
+    },
+    {
+      "description": "Don't auto-merge the STACKIT SDK — surface changes affect the resource layer",
+      "matchPackageNames": ["github.com/stackitcloud/**"],
+      "automerge": false
+    }
+  ],
+  "vulnerabilityAlerts": {
+    "labels": ["security"],
+    "automerge": true
+  },
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["before 6am on monday"]
+  }
+}
