@@ -1,5 +1,9 @@
 # stackit-nuke
 
+<p align="center">
+  <img src="docs/assets/nuke.jpg" alt="stackit-nuke" width="420">
+</p>
+
 > Remove **all** resources from a [STACKIT](https://stackit.de) project. The STACKIT counterpart of [`aws-nuke`](https://github.com/ekristen/aws-nuke), built on the same engine: [`libnuke`](https://github.com/ekristen/libnuke).
 
 [![ci](https://github.com/qaiser42/stackit-nuke/actions/workflows/ci.yml/badge.svg)](https://github.com/qaiser42/stackit-nuke/actions/workflows/ci.yml)
@@ -154,7 +158,7 @@ make snapshot     # goreleaser --snapshot
 make docs-serve   # mkdocs at localhost:8000
 ```
 
-Requires Go 1.26+.
+Requires Go 1.25+.
 
 ### Throwaway test infrastructure
 

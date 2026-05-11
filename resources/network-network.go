@@ -32,7 +32,7 @@ func (r *Network) Remove(_ context.Context) error {
 	return fmt.Errorf("Network.Remove not yet implemented")
 }
 func (r *Network) Properties() types.Properties { return PropsFromStruct(r) }
-func (r *Network) String() string                { return r.Name }
+func (r *Network) String() string               { return r.Name }
 
 type NetworkLister struct{}
 

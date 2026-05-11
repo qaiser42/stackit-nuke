@@ -32,7 +32,7 @@ func (r *SecurityGroup) Remove(_ context.Context) error {
 	return fmt.Errorf("SecurityGroup.Remove not yet implemented")
 }
 func (r *SecurityGroup) Properties() types.Properties { return PropsFromStruct(r) }
-func (r *SecurityGroup) String() string                { return r.Name }
+func (r *SecurityGroup) String() string               { return r.Name }
 
 type SecurityGroupLister struct{}
 

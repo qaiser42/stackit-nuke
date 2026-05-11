@@ -1,5 +1,7 @@
 # stackit-nuke
 
+![stackit-nuke](assets/nuke.jpg){ align=right width=320 }
+
 `stackit-nuke` removes **all** resources from a [STACKIT](https://stackit.de) project.
 
 It is the STACKIT equivalent of [`aws-nuke`](https://github.com/ekristen/aws-nuke), [`azure-nuke`](https://github.com/ekristen/azure-nuke) and [`gcp-nuke`](https://github.com/ekristen/gcp-nuke), built on the same engine: [`libnuke`](https://github.com/ekristen/libnuke).

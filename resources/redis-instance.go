@@ -32,7 +32,7 @@ func (r *RedisInstance) Remove(_ context.Context) error {
 	return fmt.Errorf("RedisInstance.Remove not yet implemented")
 }
 func (r *RedisInstance) Properties() types.Properties { return PropsFromStruct(r) }
-func (r *RedisInstance) String() string                { return r.Name }
+func (r *RedisInstance) String() string               { return r.Name }
 
 type RedisInstanceLister struct{}
 

@@ -33,7 +33,7 @@ func (r *ObjectStorageObject) Remove(_ context.Context) error {
 	return fmt.Errorf("ObjectStorageObject.Remove not yet implemented")
 }
 func (r *ObjectStorageObject) Properties() types.Properties { return PropsFromStruct(r) }
-func (r *ObjectStorageObject) String() string                { return r.Bucket + "/" + r.Key }
+func (r *ObjectStorageObject) String() string               { return r.Bucket + "/" + r.Key }
 
 type ObjectStorageObjectLister struct{}
 

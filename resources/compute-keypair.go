@@ -31,7 +31,7 @@ func (r *ComputeKeypair) Remove(_ context.Context) error {
 	return fmt.Errorf("ComputeKeypair.Remove not yet implemented")
 }
 func (r *ComputeKeypair) Properties() types.Properties { return PropsFromStruct(r) }
-func (r *ComputeKeypair) String() string                { return r.Name }
+func (r *ComputeKeypair) String() string               { return r.Name }
 
 type ComputeKeypairLister struct{}
 

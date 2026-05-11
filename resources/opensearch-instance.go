@@ -32,7 +32,7 @@ func (r *OpenSearchInstance) Remove(_ context.Context) error {
 	return fmt.Errorf("OpenSearchInstance.Remove not yet implemented")
 }
 func (r *OpenSearchInstance) Properties() types.Properties { return PropsFromStruct(r) }
-func (r *OpenSearchInstance) String() string                { return r.Name }
+func (r *OpenSearchInstance) String() string               { return r.Name }
 
 type OpenSearchInstanceLister struct{}
 

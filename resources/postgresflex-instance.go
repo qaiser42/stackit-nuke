@@ -32,7 +32,7 @@ func (r *PostgresFlexInstance) Remove(_ context.Context) error {
 	return fmt.Errorf("PostgresFlexInstance.Remove not yet implemented")
 }
 func (r *PostgresFlexInstance) Properties() types.Properties { return PropsFromStruct(r) }
-func (r *PostgresFlexInstance) String() string                { return r.Name }
+func (r *PostgresFlexInstance) String() string               { return r.Name }
 
 type PostgresFlexInstanceLister struct{}
 

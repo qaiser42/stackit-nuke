@@ -31,7 +31,7 @@ func (r *SKECluster) Remove(_ context.Context) error {
 	return fmt.Errorf("SKECluster.Remove not yet implemented")
 }
 func (r *SKECluster) Properties() types.Properties { return PropsFromStruct(r) }
-func (r *SKECluster) String() string                { return r.Name }
+func (r *SKECluster) String() string               { return r.Name }
 
 type SKEClusterLister struct{}
 

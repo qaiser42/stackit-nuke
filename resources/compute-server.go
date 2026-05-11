@@ -54,7 +54,7 @@ func (r *ComputeServer) Remove(ctx context.Context) error {
 }
 
 func (r *ComputeServer) Properties() types.Properties { return PropsFromStruct(r) }
-func (r *ComputeServer) String() string                { return r.Name }
+func (r *ComputeServer) String() string               { return r.Name }
 
 type ComputeServerLister struct{}
 

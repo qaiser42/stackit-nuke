@@ -31,7 +31,7 @@ func (r *LoadBalancer) Remove(_ context.Context) error {
 	return fmt.Errorf("LoadBalancer.Remove not yet implemented")
 }
 func (r *LoadBalancer) Properties() types.Properties { return PropsFromStruct(r) }
-func (r *LoadBalancer) String() string                { return r.Name }
+func (r *LoadBalancer) String() string               { return r.Name }
 
 type LoadBalancerLister struct{}
 

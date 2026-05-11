@@ -34,7 +34,7 @@ func (r *Subnet) Remove(_ context.Context) error {
 	return fmt.Errorf("Subnet.Remove not yet implemented")
 }
 func (r *Subnet) Properties() types.Properties { return PropsFromStruct(r) }
-func (r *Subnet) String() string                { return r.Name }
+func (r *Subnet) String() string               { return r.Name }
 
 type SubnetLister struct{}
 

@@ -32,7 +32,7 @@ func (r *RabbitMQInstance) Remove(_ context.Context) error {
 	return fmt.Errorf("RabbitMQInstance.Remove not yet implemented")
 }
 func (r *RabbitMQInstance) Properties() types.Properties { return PropsFromStruct(r) }
-func (r *RabbitMQInstance) String() string                { return r.Name }
+func (r *RabbitMQInstance) String() string               { return r.Name }
 
 type RabbitMQInstanceLister struct{}
 

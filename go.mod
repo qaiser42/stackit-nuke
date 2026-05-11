@@ -1,6 +1,6 @@
 module github.com/qaiser42/stackit-nuke
 
-go 1.26
+go 1.25
 
 require (
 	github.com/ekristen/libnuke v1.3.0

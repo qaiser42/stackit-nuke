@@ -32,7 +32,7 @@ func (r *DNSZone) Remove(_ context.Context) error {
 	return fmt.Errorf("DNSZone.Remove not yet implemented")
 }
 func (r *DNSZone) Properties() types.Properties { return PropsFromStruct(r) }
-func (r *DNSZone) String() string                { return r.Name }
+func (r *DNSZone) String() string               { return r.Name }
 
 type DNSZoneLister struct{}
 

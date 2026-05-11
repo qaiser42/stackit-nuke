@@ -13,7 +13,7 @@ make build
 make test
 ```
 
-Requires Go 1.26+.
+Requires Go 1.25+.
 
 ## Adding a new resource
 

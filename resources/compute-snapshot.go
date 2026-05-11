@@ -32,7 +32,7 @@ func (r *ComputeSnapshot) Remove(_ context.Context) error {
 	return fmt.Errorf("ComputeSnapshot.Remove not yet implemented")
 }
 func (r *ComputeSnapshot) Properties() types.Properties { return PropsFromStruct(r) }
-func (r *ComputeSnapshot) String() string                { return r.Name }
+func (r *ComputeSnapshot) String() string               { return r.Name }
 
 type ComputeSnapshotLister struct{}
 

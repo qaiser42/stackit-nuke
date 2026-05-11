@@ -32,4 +32,4 @@ docker run --rm \
 go install github.com/qaiser42/stackit-nuke@latest
 ```
 
-Requires Go 1.26+.
+Requires Go 1.25+.

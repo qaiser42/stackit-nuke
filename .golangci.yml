@@ -1,20 +1,35 @@
+version: "2"
+
 run:
   timeout: 5m
 
 linters:
+  default: none
   enable:
     - errcheck
-    - gofmt
-    - goimports
     - govet
     - ineffassign
     - misspell
+    - revive
     - staticcheck
     - unused
-    - revive
+  settings:
+    revive:
+      rules:
+        # Disable purely-stylistic rules that flood the output without finding
+        # real bugs. The rest of revive's defaults stay on.
+        - name: exported
+          disabled: true
+        - name: package-comments
+          disabled: true
+        - name: var-naming
+          disabled: true
+  exclusions:
+    rules:
+      - path: 'resources/.*\.go'
+        linters: [revive]
 
-issues:
-  exclude-rules:
-    - path: resources/.*\.go
-      linters: [revive]
-      text: "exported"
+formatters:
+  enable:
+    - gofmt
+    - goimports

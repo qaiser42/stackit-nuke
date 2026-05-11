@@ -32,7 +32,7 @@ func (r *MongoDBFlexInstance) Remove(_ context.Context) error {
 	return fmt.Errorf("MongoDBFlexInstance.Remove not yet implemented")
 }
 func (r *MongoDBFlexInstance) Properties() types.Properties { return PropsFromStruct(r) }
-func (r *MongoDBFlexInstance) String() string                { return r.Name }
+func (r *MongoDBFlexInstance) String() string               { return r.Name }
 
 type MongoDBFlexInstanceLister struct{}
 

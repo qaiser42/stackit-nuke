@@ -32,7 +32,7 @@ func (r *FloatingIP) Remove(_ context.Context) error {
 	return fmt.Errorf("FloatingIP.Remove not yet implemented")
 }
 func (r *FloatingIP) Properties() types.Properties { return PropsFromStruct(r) }
-func (r *FloatingIP) String() string                { return r.IP }
+func (r *FloatingIP) String() string               { return r.IP }
 
 type FloatingIPLister struct{}
 

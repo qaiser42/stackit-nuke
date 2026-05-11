@@ -33,7 +33,7 @@ func (r *ComputeVolume) Remove(_ context.Context) error {
 	return fmt.Errorf("ComputeVolume.Remove not yet implemented")
 }
 func (r *ComputeVolume) Properties() types.Properties { return PropsFromStruct(r) }
-func (r *ComputeVolume) String() string                { return r.Name }
+func (r *ComputeVolume) String() string               { return r.Name }
 
 type ComputeVolumeLister struct{}
 

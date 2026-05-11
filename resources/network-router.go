@@ -32,7 +32,7 @@ func (r *Router) Remove(_ context.Context) error {
 	return fmt.Errorf("Router.Remove not yet implemented")
 }
 func (r *Router) Properties() types.Properties { return PropsFromStruct(r) }
-func (r *Router) String() string                { return r.Name }
+func (r *Router) String() string               { return r.Name }
 
 type RouterLister struct{}
 
