@@ -6,6 +6,9 @@ release:
   github:
     owner: qaiser42
     name: stackit-nuke
+  # Re-run a failed release on the same tag overwrites stale uploads instead
+  # of erroring with 422 already_exists.
+  replace_existing_artifacts: true
 
 builds:
   - id: default
