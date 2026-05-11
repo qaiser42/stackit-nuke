@@ -4,7 +4,7 @@ go 1.26
 
 require (
 	github.com/ekristen/libnuke v1.3.0
-	github.com/sirupsen/logrus v1.9.3
+	github.com/sirupsen/logrus v1.9.4
 	github.com/stackitcloud/stackit-sdk-go/core v0.26.0
 	github.com/stackitcloud/stackit-sdk-go/services/iaas v1.11.1
 	github.com/urfave/cli/v2 v2.27.5
