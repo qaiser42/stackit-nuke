@@ -57,6 +57,9 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         env:
           KO_DOCKER_REPO: ghcr.io/${{ github.repository }}
+          # Consumed by ldflags templates in .ko.yaml
+          VERSION: ${{ github.ref_name }}
+          COMMIT: ${{ github.sha }}
         run: |
           ko build --bare --tags="${GITHUB_REF_NAME},latest" --platform=linux/amd64,linux/arm64 ./
 
