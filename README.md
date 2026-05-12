@@ -144,9 +144,33 @@ ComputeServer.Remove(ctx)
 
 Implementing the next 18 resources = copy this pattern, swap the SDK package.
 
-## Status
+## Resource coverage
 
-Early. The CLI, config, auth, and engine are wired up. Resource Listers/Removers are placeholder stubs — see [Contributing](docs/contributing.md) to add an implementation.
+Legend: ✅ list + delete via real STACKIT SDK · 🟡 registered, lister returns empty · ⬜ not yet registered
+
+| Service | Resource | Status | SDK package |
+|---|---|---|---|
+| IaaS / compute | `ComputeServer` | ✅ | `stackit-sdk-go/services/iaas/v2api` |
+| IaaS / compute | `ComputeVolume` | 🟡 | `iaas/v2api` |
+| IaaS / compute | `ComputeSnapshot` | 🟡 | `iaas/v2api` |
+| IaaS / compute | `ComputeKeypair` | 🟡 | `iaas/v2api` |
+| IaaS / network | `Network` | 🟡 | `iaas/v2api` |
+| IaaS / network | `Subnet` | 🟡 | `iaas/v2api` |
+| IaaS / network | `Router` | 🟡 | `iaas/v2api` |
+| IaaS / network | `SecurityGroup` | 🟡 | `iaas/v2api` |
+| IaaS / network | `FloatingIP` | 🟡 | `iaas/v2api` |
+| Object Storage | `ObjectStorageBucket` | 🟡 | `services/objectstorage` |
+| Object Storage | `ObjectStorageObject` | 🟡 | `services/objectstorage` |
+| SKE | `SKECluster` | 🟡 | `services/ske` |
+| PostgresFlex | `PostgresFlexInstance` | 🟡 | `services/postgresflex` |
+| MongoDBFlex | `MongoDBFlexInstance` | 🟡 | `services/mongodbflex` |
+| Redis | `RedisInstance` | 🟡 | `services/redis` |
+| OpenSearch | `OpenSearchInstance` | 🟡 | `services/opensearch` |
+| RabbitMQ | `RabbitMQInstance` | 🟡 | `services/rabbitmq` |
+| LoadBalancer | `LoadBalancer` | 🟡 | `services/loadbalancer` |
+| DNS | `DNSZone` | 🟡 | `services/dns` |
+
+**1 of 19 resources fully working.** The CLI / config / auth / libnuke engine are functional; the per-resource SDK wiring lands incrementally. Pick one above and follow [`resources/compute-server.go`](resources/compute-server.go) as the reference pattern — see [Contributing](docs/contributing.md).
 
 ## Development
 
