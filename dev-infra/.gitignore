@@ -4,4 +4,6 @@ Pulumi.dev.yaml
 Pulumi.*.yaml
 !Pulumi.yaml
 !Pulumi.dev.yaml.example
+nuke.yaml
+!nuke.yaml.example
 *.log

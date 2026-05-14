@@ -60,7 +60,50 @@ stackit-nuke run --config config.yaml                 # dry run
 stackit-nuke run --config config.yaml --no-dry-run    # real
 ```
 
+After a real run, you get a summary of everything deleted:
+
+```
+                  _ _.-'`-._
+              .-'`           '-.
+            .'      _ . - = - . _   '.
+           /    .-'             '-.   \
+          /   .'                   '.  \
+         |   /                       \  |
+         |  |          BOOM           | |
+         |  |                         | |
+          \  '.                     .'  /
+           \   '-.                .-'  /
+            '.    '-._        _.-'   .'
+              '-.     `'----'`    .-'
+                 `'-..__________..-'`
+
+9 resource(s) nuked:
+
+  ComputeServer
+    - dev-server-0 (2bd1a04d)
+    - dev-server-1 (6adb84a9)
+  ComputeVolume
+    - stackit-nuke-dev-extra (bb668c22)
+  Network
+    - dev-net (6f452480)
+  NetworkInterface
+    - dev-nic-0-b7856b3 (605f8edd)
+    - dev-nic-1-cf66680 (3958de73)
+```
+
 Full docs: <https://qaiser42.io/stackit-nuke>
+
+## Concepts
+
+- **Project allow-list** — `project-ids` is the universe of what may be nuked. The CLI may *narrow* it (`--project-id`); it cannot widen. Without it, the tool refuses to start.
+- **Blocklist** — `blocklist` is a hard veto. If any blocked ID also appears in `project-ids`, startup fails. Belt-and-suspenders against fat-fingering.
+- **Dry-run default** — `run` lists what would be deleted. Real deletion requires `--no-dry-run` *and* (unless `--force`) typing the project ID back at a prompt.
+- **Filters mark resources as ineligible** — counter-intuitive: a filter is a *keep-list*, not a kill-list. Anything matched by a filter survives; everything else gets deleted. Filter by `Name`, `tag:*`, etc.
+- **Presets** — reusable named filter sets, attached to accounts via `presets: [...]`. Same shape as filters; just deduped at one site.
+- **Resource type include/exclude** — `resource-types.includes` narrows the registered set; `excludes` always wins. Empty `includes` means all registered types.
+- **Scopes** — every resource is `ProjectScope` today (region-aware, scoped to one STACKIT project). Engine also supports an `OrganizationScope` we have not yet used.
+- **Dependency order** — each `Resource` declares `DependsOn`. libnuke topologically sorts and only deletes a resource once everything it depends on has finished. E.g. `Network` depends on `NetworkInterface` so NICs detach first.
+- **Settings & feature-flags** — per-resource toggles (e.g. `EmptyBeforeDelete: true` for buckets) live under `settings:`. Engine behaviors (`wait-on-dependencies`, `filter-groups`) live under `feature-flags:`.
 
 ## How it works (101)
 
@@ -71,7 +114,7 @@ Full docs: <https://qaiser42.io/stackit-nuke>
 `main.go` blank-imports `pkg/commands/...` and `resources/...`. Their `init()` functions:
 
 - register CLI subcommands (`run`, `resource-types`)
-- register **19 resource types** with `libnuke/pkg/registry` — each entry pairs a `Lister` (discover) with a `Resource` (delete) and optional `DependsOn` (ordering)
+- register **20 resource types** with `libnuke/pkg/registry` — each entry pairs a `Lister` (discover) with a `Resource` (delete) and optional `DependsOn` (ordering)
 
 No reflection, no plugin loader — pure compile-time wiring.
 
@@ -151,13 +194,14 @@ Legend: ✅ list + delete via real STACKIT SDK · 🟡 registered, lister return
 | Service | Resource | Status | SDK package |
 |---|---|---|---|
 | IaaS / compute | `ComputeServer` | ✅ | `stackit-sdk-go/services/iaas/v2api` |
-| IaaS / compute | `ComputeVolume` | 🟡 | `iaas/v2api` |
+| IaaS / compute | `ComputeVolume` | ✅ | `iaas/v2api` |
 | IaaS / compute | `ComputeSnapshot` | 🟡 | `iaas/v2api` |
 | IaaS / compute | `ComputeKeypair` | 🟡 | `iaas/v2api` |
-| IaaS / network | `Network` | 🟡 | `iaas/v2api` |
+| IaaS / network | `Network` | ✅ | `iaas/v2api` |
+| IaaS / network | `NetworkInterface` | ✅ | `iaas/v2api` |
 | IaaS / network | `Subnet` | 🟡 | `iaas/v2api` |
 | IaaS / network | `Router` | 🟡 | `iaas/v2api` |
-| IaaS / network | `SecurityGroup` | 🟡 | `iaas/v2api` |
+| IaaS / network | `SecurityGroup` | ✅ | `iaas/v2api` |
 | IaaS / network | `FloatingIP` | 🟡 | `iaas/v2api` |
 | Object Storage | `ObjectStorageBucket` | 🟡 | `services/objectstorage` |
 | Object Storage | `ObjectStorageObject` | 🟡 | `services/objectstorage` |
@@ -170,7 +214,7 @@ Legend: ✅ list + delete via real STACKIT SDK · 🟡 registered, lister return
 | LoadBalancer | `LoadBalancer` | 🟡 | `services/loadbalancer` |
 | DNS | `DNSZone` | 🟡 | `services/dns` |
 
-**1 of 19 resources fully working.** The CLI / config / auth / libnuke engine are functional; the per-resource SDK wiring lands incrementally. Pick one above and follow [`resources/compute-server.go`](resources/compute-server.go) as the reference pattern — see [Contributing](docs/contributing.md).
+**5 of 20 resources fully working.** The CLI / config / auth / libnuke engine are functional; the per-resource SDK wiring lands incrementally. Pick one above and follow [`resources/compute-server.go`](resources/compute-server.go) as the reference pattern — see [Contributing](docs/contributing.md).
 
 ## Development
 
@@ -189,8 +233,8 @@ Requires Go 1.25+.
 [`dev-infra/`](dev-infra/) is a Pulumi project ([`@stackitcloud/pulumi-stackit`](https://www.pulumi.com/registry/packages/stackit/)) that spins up a small STACKIT footprint (network, NICs, servers, volume) you can repeatedly create + nuke + recreate while developing new resource implementations.
 
 ```bash
-cd dev-infra && npm install && pulumi up
-cd .. && ./stackit-nuke run --config examples/compute-only.yaml --no-dry-run
+cd dev-infra && go mod download && pulumi up
+cd .. && ./stackit-nuke run --config dev-infra/nuke.yaml --no-dry-run
 ```
 
 See [`dev-infra/README.md`](dev-infra/README.md).

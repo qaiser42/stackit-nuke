@@ -1,0 +1,38 @@
+# stackit-nuke config for the dev-infra Pulumi stack.
+#
+# Copy to nuke.yaml and fill in your project ID + sa-key path.
+#
+# Targets every resource type that has a real SDK implementation today —
+# the same set dev-infra creates: servers, NICs, volumes.
+#
+# Round trip:
+#   pulumi up
+#   cd .. && ./stackit-nuke run --config dev-infra/nuke.yaml --no-dry-run
+#   cd dev-infra && pulumi refresh && pulumi destroy
+
+regions:
+  - eu01
+
+# Match the projectId set in Pulumi.dev.yaml.
+project-ids:
+  - 00000000-0000-0000-0000-000000000000
+
+auth:
+  service-account-key-path: ~/.stackit/sa.json
+
+resource-types:
+  includes:
+    - ComputeServer
+    - ComputeVolume
+    - NetworkInterface
+    - Network
+    - SecurityGroup
+
+# STACKIT auto-creates a "default" SG per project that resists deletion.
+# Skip it so the run doesn't surface a permanent failure.
+accounts:
+  "00000000-0000-0000-0000-000000000000":
+    filters:
+      SecurityGroup:
+        - property: Name
+          value: default

@@ -21,6 +21,7 @@ func Flags() []cli.Flag {
 		&cli.BoolFlag{Name: "log-caller", Usage: "log caller (file:line)"},
 		&cli.BoolFlag{Name: "log-disable-color", Usage: "disable log coloring"},
 		&cli.BoolFlag{Name: "log-full-timestamp", Usage: "always show full timestamp"},
+		&cli.BoolFlag{Name: "log-verbose", Usage: "show every libnuke property in log lines (default: compact)"},
 	}
 }
 
@@ -36,6 +37,10 @@ func Before(c *cli.Context) error {
 		}
 	}
 	logrus.SetFormatter(formatter)
+
+	if !c.Bool("log-verbose") {
+		logrus.AddHook(compactHook{})
+	}
 
 	switch c.String("log-level") {
 	case "trace":

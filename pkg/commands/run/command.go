@@ -140,8 +140,15 @@ func execute(c *cli.Context) error {
 		}
 	}
 
+	hook := &nukedHook{}
+	logrus.AddHook(hook)
+
 	logger.Debug("running ...")
-	return n.Run(ctx)
+	runErr := n.Run(ctx)
+	if params.NoDryRun {
+		printSummary(logger, hook.entries)
+	}
+	return runErr
 }
 
 func firstNonEmpty(vals ...string) string {

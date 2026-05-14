@@ -2,7 +2,7 @@
 
 Throwaway STACKIT infrastructure for testing `stackit-nuke` locally.
 
-Uses the **official Pulumi STACKIT provider** ([`@stackitcloud/pulumi-stackit`](https://www.pulumi.com/registry/packages/stackit/)) — currently alpha, IaaS + Resource Manager only.
+Uses the **official Pulumi STACKIT provider** ([`pulumi-stackit`](https://www.pulumi.com/registry/packages/stackit/)) via its Go SDK — currently alpha, IaaS + Resource Manager only.
 
 ## What it deploys
 
@@ -16,18 +16,20 @@ All resources are labelled `managed-by=pulumi`, `purpose=stackit-nuke-dev` so yo
 ## Prerequisites
 
 - Pulumi CLI (`brew install pulumi`)
-- Node.js 20+
+- Go 1.23+
 - A STACKIT service-account key — same one `stackit-nuke` uses
 
 ## One-time setup
 
 ```bash
 cd dev-infra
-npm install
+go mod download
 pulumi login --local                      # or your usual backend
 pulumi stack init dev
 cp Pulumi.dev.yaml.example Pulumi.dev.yaml
 $EDITOR Pulumi.dev.yaml                   # paste your project ID
+cp nuke.yaml.example nuke.yaml
+$EDITOR nuke.yaml                         # paste same project ID + sa-key path
 export STACKIT_SERVICE_ACCOUNT_KEY_PATH=~/.stackit/sa.json
 ```
 
@@ -38,15 +40,15 @@ export STACKIT_SERVICE_ACCOUNT_KEY_PATH=~/.stackit/sa.json
 pulumi up
 
 # Confirm stackit-nuke sees it (dry run)
-cd .. && ./stackit-nuke run --config examples/compute-only.yaml
+cd .. && ./stackit-nuke run --config dev-infra/nuke.yaml
 
 # Nuke it
-./stackit-nuke run --config examples/compute-only.yaml --no-dry-run
+./stackit-nuke run --config dev-infra/nuke.yaml --no-dry-run
 
-# Verify the nuker did its job — Pulumi will show the servers as "missing"
+# Verify the nuker did its job — Pulumi will show resources as "missing"
 cd dev-infra && pulumi refresh
 
-# Clean residual state (volumes, network — stubs in stackit-nuke don't delete these yet)
+# Clear Pulumi state — the cloud resources are already gone
 pulumi destroy
 ```
 

@@ -32,6 +32,7 @@ var expected = []string{
 	"RabbitMQInstance",
 	"LoadBalancer",
 	"DNSZone",
+	"NetworkInterface",
 }
 
 func TestAllResourcesRegistered(t *testing.T) {
@@ -71,7 +72,11 @@ func TestAllResourcesUseProjectScope(t *testing.T) {
 // They are excluded from the stub-emptiness check below; they get their own
 // per-resource tests instead.
 var realImpls = map[string]bool{
-	"ComputeServer": true,
+	"ComputeServer":    true,
+	"ComputeVolume":    true,
+	"NetworkInterface": true,
+	"Network":          true,
+	"SecurityGroup":    true,
 }
 
 func TestListersReturnEmpty(t *testing.T) {
