@@ -49,7 +49,7 @@ func (h *nukedHook) Fire(e *logrus.Entry) error {
 
 const nukeArt = `
                   _ _.-'` + "`" + `-._
-              .-'`+"`"+`           '-.
+              .-'` + "`" + `           '-.
             .'      _ . - = - . _   '.
            /    .-'             '-.   \
           /   .'                   '.  \
