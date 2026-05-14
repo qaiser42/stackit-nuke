@@ -2,7 +2,7 @@
 #   pulumi stack init dev
 #   pulumi up
 config:
-  stackit-nuke-dev-infra:projectId: b12db9b4-914b-4g08-a988-ae348c2a034d
+  stackit-nuke-dev-infra:projectId: 00000000-0000-0000-0000-000000000000
   stackit-nuke-dev-infra:region: eu01
   stackit-nuke-dev-infra:availabilityZone: eu01-1
   stackit-nuke-dev-infra:machineType: g2i.1

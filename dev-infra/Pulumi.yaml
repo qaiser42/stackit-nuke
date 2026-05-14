@@ -1,5 +1,5 @@
 name: stackit-nuke-dev-infra
-runtime: nodejs
+runtime: go
 description: |
   Throwaway STACKIT infrastructure for testing stackit-nuke locally.
 
