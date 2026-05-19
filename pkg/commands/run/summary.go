@@ -88,7 +88,12 @@ func printSummary(logger *logrus.Logger, entries []nukedEntry) {
 		fmt.Fprintf(&b, "    - %s\n", label(e))
 	}
 
-	logger.Info(b.String())
+	// The summary is final human-facing report output (ASCII art + a
+	// multi-line list), not a structured log record. Routing it through
+	// logrus makes the TextFormatter quote the msg field and escape every
+	// newline to a literal \n. Write straight to the logger's output so the
+	// banner renders with real line breaks while still honouring SetOutput.
+	fmt.Fprint(logger.Out, b.String())
 }
 
 func label(e nukedEntry) string {
