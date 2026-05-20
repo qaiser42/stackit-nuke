@@ -53,6 +53,7 @@ nav:
       - Install: install.md
       - Authentication: auth.md
       - Quick Start: quick-start.md
+  - Concepts: concepts.md
   - Configuration:
       - Overview: config.md
       - Filtering: config-filtering.md
