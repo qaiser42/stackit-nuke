@@ -2,8 +2,9 @@ name: renovate
 
 on:
   schedule:
-    # Monday early UTC. renovate.json gates the rest (before 6am Mon, Europe/Berlin).
-    - cron: "0 0-5 * * 1"
+    # Hourly — renovate.json no longer has a schedule, so PRs flow anytime.
+    # Frequent runs also let strict branch protection merge queued PRs one per run.
+    - cron: "0 * * * *"
   workflow_dispatch:
     inputs:
       logLevel:

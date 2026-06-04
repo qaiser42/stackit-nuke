@@ -2,10 +2,11 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:recommended", ":semanticCommits"],
   "timezone": "Europe/Berlin",
-  "schedule": ["before 6am on monday"],
   "labels": ["dependencies"],
   "rangeStrategy": "bump",
   "platformAutomerge": true,
+  "prHourlyLimit": 0,
+  "prConcurrentLimit": 0,
   "packageRules": [
     {
       "description": "Auto-merge all GitHub Actions updates",
@@ -14,26 +15,28 @@
       "automergeType": "pr"
     },
     {
-      "description": "Auto-merge patch-level updates across all managers",
-      "matchUpdateTypes": ["patch", "pin", "digest"],
+      "description": "Auto-merge minor + patch + digest across all managers",
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
       "automerge": true,
       "automergeType": "pr"
     },
     {
-      "description": "Group all minor + patch Go module updates into one PR per week",
+      "description": "Group minor + patch Go module updates into one PR",
       "matchManagers": ["gomod"],
       "matchUpdateTypes": ["minor", "patch"],
       "groupName": "go modules (non-major)"
     },
     {
-      "description": "Don't auto-merge libnuke — engine bumps deserve a human glance",
+      "description": "libnuke — manual, own PR so it doesn't block the group's automerge",
       "matchPackageNames": ["github.com/ekristen/libnuke"],
-      "automerge": false
+      "automerge": false,
+      "groupName": "libnuke"
     },
     {
-      "description": "Don't auto-merge the STACKIT SDK — surface changes affect the resource layer",
+      "description": "STACKIT SDK — manual, own PR so it doesn't block the group's automerge",
       "matchPackageNames": ["github.com/stackitcloud/**"],
-      "automerge": false
+      "automerge": false,
+      "groupName": "stackit sdk"
     }
   ],
   "vulnerabilityAlerts": {
