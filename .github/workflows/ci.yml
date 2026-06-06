@@ -19,7 +19,7 @@ jobs:
           go-version: "1.26.4"
       - uses: golangci/golangci-lint-action@v9
         with:
-          version: v2.5.0
+          version: v2.12.2
           # Build the linter from source with the runner's Go. Prebuilt
           # golangci-lint binaries are released built with go1.25; if any
           # file under analysis (theirs or transitive dep) needs go1.26

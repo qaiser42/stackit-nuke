@@ -77,7 +77,7 @@ func printSummary(logger *logrus.Logger, entries []nukedEntry) {
 
 	var b strings.Builder
 	b.WriteString(nukeArt)
-	b.WriteString(fmt.Sprintf("\n%d resource(s) nuked:\n\n", len(entries)))
+	fmt.Fprintf(&b, "\n%d resource(s) nuked:\n\n", len(entries))
 
 	currentType := ""
 	for _, e := range entries {
