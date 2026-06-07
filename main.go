@@ -1,11 +1,12 @@
 package main
 
 import (
+	"context"
 	"os"
 	"path"
 
 	"github.com/sirupsen/logrus"
-	"github.com/urfave/cli/v2"
+	"github.com/urfave/cli/v3"
 
 	"github.com/qaiser42/stackit-nuke/pkg/common"
 
@@ -25,20 +26,18 @@ func main() {
 		}
 	}()
 
-	app := cli.NewApp()
-	app.Name = path.Base(os.Args[0])
-	app.Usage = "remove all resources from a STACKIT project"
-	app.Version = common.AppVersion.Summary
-	app.Authors = []*cli.Author{
-		{Name: "stackit-nuke contributors"},
+	cmd := &cli.Command{
+		Name:     path.Base(os.Args[0]),
+		Usage:    "remove all resources from a STACKIT project",
+		Version:  common.AppVersion.Summary,
+		Authors:  []any{"stackit-nuke contributors"},
+		Commands: common.GetCommands(),
+		CommandNotFound: func(_ context.Context, _ *cli.Command, command string) {
+			logrus.Fatalf("Command %s not found.", command)
+		},
 	}
 
-	app.Commands = common.GetCommands()
-	app.CommandNotFound = func(_ *cli.Context, command string) {
-		logrus.Fatalf("Command %s not found.", command)
-	}
-
-	if err := app.Run(os.Args); err != nil {
+	if err := cmd.Run(context.Background(), os.Args); err != nil {
 		logrus.Fatal(err)
 	}
 }

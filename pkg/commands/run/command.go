@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/sirupsen/logrus"
-	"github.com/urfave/cli/v2"
+	"github.com/urfave/cli/v3"
 
 	libconfig "github.com/ekristen/libnuke/pkg/config"
 	"github.com/ekristen/libnuke/pkg/filter"
@@ -22,14 +22,14 @@ import (
 	"github.com/qaiser42/stackit-nuke/pkg/stackit"
 )
 
-func execute(c *cli.Context) error {
-	ctx, cancel := context.WithCancel(c.Context)
+func execute(ctx context.Context, c *cli.Command) error {
+	ctx, cancel := context.WithCancel(ctx)
 	defer cancel()
 
 	logger := logrus.StandardLogger()
 
 	parsedConfig, err := config.New(libconfig.Options{
-		Path:         c.Path("config"),
+		Path:         c.String("config"),
 		Deprecations: registry.GetDeprecatedResourceTypeMapping(),
 	})
 	if err != nil {
@@ -162,7 +162,7 @@ func firstNonEmpty(vals ...string) string {
 
 func init() {
 	flags := []cli.Flag{
-		&cli.PathFlag{Name: "config", Usage: "path to config file", Value: "config.yaml"},
+		&cli.StringFlag{Name: "config", Usage: "path to config file", Value: "config.yaml"},
 		&cli.StringSliceFlag{Name: "include", Usage: "only include this specific resource"},
 		&cli.StringSliceFlag{Name: "exclude", Usage: "exclude this specific resource (overrides everything)"},
 		&cli.BoolFlag{Name: "quiet", Aliases: []string{"q"}, Usage: "hide filtered messages"},
@@ -170,10 +170,10 @@ func init() {
 		&cli.BoolFlag{Name: "no-prompt", Aliases: []string{"force"}, Usage: "skip the typed-confirmation prompt"},
 		&cli.IntFlag{Name: "prompt-delay", Aliases: []string{"force-sleep"}, Usage: "seconds to wait after prompt before running (min 3)", Value: 10},
 		&cli.StringSliceFlag{Name: "feature-flag", Usage: "enable experimental behavior"},
-		&cli.StringFlag{Name: "auth-file", Usage: "path to STACKIT service-account key JSON", EnvVars: []string{"STACKIT_SERVICE_ACCOUNT_KEY_PATH"}},
-		&cli.StringFlag{Name: "private-key-file", Usage: "path to RSA private key (for service-account key auth)", EnvVars: []string{"STACKIT_PRIVATE_KEY_PATH"}},
-		&cli.StringFlag{Name: "token", Usage: "STACKIT bearer token", EnvVars: []string{"STACKIT_SERVICE_ACCOUNT_TOKEN"}},
-		&cli.StringSliceFlag{Name: "project-id", Usage: "narrow nuke to one or more project IDs from the config allow-list", EnvVars: []string{"STACKIT_PROJECT_ID"}},
+		&cli.StringFlag{Name: "auth-file", Usage: "path to STACKIT service-account key JSON", Sources: cli.EnvVars("STACKIT_SERVICE_ACCOUNT_KEY_PATH")},
+		&cli.StringFlag{Name: "private-key-file", Usage: "path to RSA private key (for service-account key auth)", Sources: cli.EnvVars("STACKIT_PRIVATE_KEY_PATH")},
+		&cli.StringFlag{Name: "token", Usage: "STACKIT bearer token", Sources: cli.EnvVars("STACKIT_SERVICE_ACCOUNT_TOKEN")},
+		&cli.StringSliceFlag{Name: "project-id", Usage: "narrow nuke to one or more project IDs from the config allow-list", Sources: cli.EnvVars("STACKIT_PROJECT_ID")},
 	}
 
 	cmd := &cli.Command{

@@ -1,10 +1,11 @@
 package list
 
 import (
+	"context"
 	"fmt"
 	"sort"
 
-	"github.com/urfave/cli/v2"
+	"github.com/urfave/cli/v3"
 
 	"github.com/ekristen/libnuke/pkg/registry"
 
@@ -12,7 +13,7 @@ import (
 	"github.com/qaiser42/stackit-nuke/pkg/common"
 )
 
-func execute(_ *cli.Context) error {
+func execute(_ context.Context, _ *cli.Command) error {
 	names := registry.GetNames()
 	sort.Strings(names)
 	for _, n := range names {
