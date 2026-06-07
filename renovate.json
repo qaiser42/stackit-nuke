@@ -27,6 +27,13 @@
       "groupName": "go modules (non-major)"
     },
     {
+      "description": "Go module major upgrades change the import path and usually break the API — they need a manual code migration. Gate behind Dependency Dashboard approval so renovate surfaces them but never auto-opens an uncompilable PR.",
+      "matchManagers": ["gomod"],
+      "matchUpdateTypes": ["major"],
+      "dependencyDashboardApproval": true,
+      "automerge": false
+    },
+    {
       "description": "libnuke — manual, own PR so it doesn't block the group's automerge",
       "matchPackageNames": ["github.com/ekristen/libnuke"],
       "automerge": false,
