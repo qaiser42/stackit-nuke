@@ -7,7 +7,7 @@ require (
 	github.com/sirupsen/logrus v1.9.4
 	github.com/stackitcloud/stackit-sdk-go/core v0.26.0
 	github.com/stackitcloud/stackit-sdk-go/services/iaas v1.12.2
-	github.com/urfave/cli/v3 v3.9.1
+	github.com/urfave/cli/v3 v3.10.0
 	gopkg.in/yaml.v3 v3.0.1
 )
 
