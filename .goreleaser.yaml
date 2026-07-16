@@ -29,11 +29,11 @@ builds:
 
 archives:
   - id: default
-    builds: [default]
+    ids: [default]
     name_template: "{{ .ProjectName }}-v{{ .Version }}-{{ .Os }}-{{ .Arch }}"
     format_overrides:
       - goos: windows
-        format: zip
+        formats: [zip]
 
 checksum:
   name_template: checksums.txt
@@ -58,11 +58,12 @@ signs:
     cmd: cosign
     signature: "${artifact}.sig"
     certificate: "${artifact}.pem"
+    # No explicit --oidc-provider/--oidc-issuer: cosign v3 rejects service
+    # URLs when its signing config is active, and it auto-detects the GitHub
+    # Actions ambient OIDC token anyway.
     args:
       - sign-blob
       - "--yes"
-      - "--oidc-provider=github"
-      - "--oidc-issuer=https://token.actions.githubusercontent.com"
       - "--output-certificate=${certificate}"
       - "--output-signature=${signature}"
       - "${artifact}"
