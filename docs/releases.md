@@ -12,10 +12,9 @@ Releases are produced by the [`release`](https://github.com/qaiser42/stackit-nuk
 ## Verifying a release
 
 ```bash
-# checksum signature
+# checksum signature (sigstore bundle contains signature + certificate)
 cosign verify-blob \
-  --certificate checksums.txt.pem \
-  --signature   checksums.txt.sig \
+  --bundle checksums.txt.sigstore.json \
   --certificate-identity-regexp 'github.com/qaiser42/stackit-nuke' \
   --certificate-oidc-issuer 'https://token.actions.githubusercontent.com' \
   checksums.txt

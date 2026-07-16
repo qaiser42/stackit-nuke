@@ -56,15 +56,17 @@ sboms:
 signs:
   - id: cosign
     cmd: cosign
-    signature: "${artifact}.sig"
-    certificate: "${artifact}.pem"
-    # No explicit --oidc-provider/--oidc-issuer: cosign v3 rejects service
-    # URLs when its signing config is active, and it auto-detects the GitHub
-    # Actions ambient OIDC token anyway.
+    # cosign v3: keyless via ambient GitHub Actions OIDC (explicit
+    # --oidc-* flags conflict with its signing config), and signature +
+    # certificate ship together in a sigstore bundle instead of separate
+    # .sig/.pem files. Verify with:
+    #   cosign verify-blob --bundle checksums.txt.sigstore.json checksums.txt \
+    #     --certificate-identity-regexp 'github.com/qaiser42/stackit-nuke' \
+    #     --certificate-oidc-issuer https://token.actions.githubusercontent.com
+    signature: "${artifact}.sigstore.json"
     args:
       - sign-blob
       - "--yes"
-      - "--output-certificate=${certificate}"
-      - "--output-signature=${signature}"
+      - "--bundle=${signature}"
       - "${artifact}"
     artifacts: checksum
