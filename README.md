@@ -37,7 +37,7 @@ Legend: ✅ list + delete via real STACKIT SDK · 🟡 registered, lister return
 | Object Storage | `ObjectStorageBucket` | 🟡 | `services/objectstorage` |
 | Object Storage | `ObjectStorageObject` | 🟡 | `services/objectstorage` |
 | SKE | `SKECluster` | 🟡 | `services/ske` |
-| PostgresFlex | `PostgresFlexInstance` | 🟡 | `services/postgresflex` |
+| PostgresFlex | `PostgresFlexInstance` | ✅ | `services/postgresflex/v2api` |
 | MongoDBFlex | `MongoDBFlexInstance` | 🟡 | `services/mongodbflex` |
 | Redis | `RedisInstance` | 🟡 | `services/redis` |
 | OpenSearch | `OpenSearchInstance` | 🟡 | `services/opensearch` |
@@ -45,7 +45,7 @@ Legend: ✅ list + delete via real STACKIT SDK · 🟡 registered, lister return
 | LoadBalancer | `LoadBalancer` | 🟡 | `services/loadbalancer` |
 | DNS | `DNSZone` | 🟡 | `services/dns` |
 
-**5 of 20 resources fully working.** The CLI / config / auth / libnuke engine are functional; the per-resource SDK wiring lands incrementally. Pick one above and follow [`resources/compute-server.go`](resources/compute-server.go) as the reference pattern — see [Contributing](docs/contributing.md).
+**6 of 20 resources fully working.** The CLI / config / auth / libnuke engine are functional; the per-resource SDK wiring lands incrementally. Pick one above and follow [`resources/compute-server.go`](resources/compute-server.go) as the reference pattern — see [Contributing](docs/contributing.md).
 
 ## Features
 

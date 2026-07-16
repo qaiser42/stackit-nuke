@@ -72,11 +72,12 @@ func TestAllResourcesUseProjectScope(t *testing.T) {
 // They are excluded from the stub-emptiness check below; they get their own
 // per-resource tests instead.
 var realImpls = map[string]bool{
-	"ComputeServer":    true,
-	"ComputeVolume":    true,
-	"NetworkInterface": true,
-	"Network":          true,
-	"SecurityGroup":    true,
+	"ComputeServer":        true,
+	"ComputeVolume":        true,
+	"NetworkInterface":     true,
+	"Network":              true,
+	"SecurityGroup":        true,
+	"PostgresFlexInstance": true,
 }
 
 func TestListersReturnEmpty(t *testing.T) {
