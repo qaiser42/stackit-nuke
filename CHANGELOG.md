@@ -6,6 +6,14 @@ to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.0.6] - 2026-07-27
+
+### Added
+- Real list + delete via STACKIT DNS v1 SDK for `DNSZone`: zones listed once
+  per run (global service), soft-deleted zones filtered out
+- Real list + delete via STACKIT IaaS v2 public-ips API for `FloatingIP`
+- Real docs for `dns-zone` and `floating-ip` resource pages
+
 ## [0.0.2] - 2026-05-14
 
 ### Added

@@ -77,7 +77,9 @@ var realImpls = map[string]bool{
 	"NetworkInterface":     true,
 	"Network":              true,
 	"SecurityGroup":        true,
+	"FloatingIP":           true,
 	"PostgresFlexInstance": true,
+	"DNSZone":              true,
 }
 
 func TestListersReturnEmpty(t *testing.T) {
