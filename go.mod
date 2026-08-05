@@ -6,7 +6,7 @@ require (
 	github.com/ekristen/libnuke v1.3.0
 	github.com/sirupsen/logrus v1.9.4
 	github.com/stackitcloud/stackit-sdk-go/core v0.26.0
-	github.com/stackitcloud/stackit-sdk-go/services/dns v0.21.0
+	github.com/stackitcloud/stackit-sdk-go/services/dns v0.22.0
 	github.com/stackitcloud/stackit-sdk-go/services/iaas v1.13.0
 	github.com/stackitcloud/stackit-sdk-go/services/postgresflex v1.12.0
 	github.com/urfave/cli/v3 v3.10.1
