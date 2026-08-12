@@ -6,6 +6,14 @@ to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.0.7] - 2026-08-12
+
+### Added
+- New `GitInstance` resource type: real list + delete via STACKIT Git
+  v1beta SDK. Instances listed once per run (global service); deletion is
+  asynchronous and polled by libnuke until gone
+- Docs page for `git-instance`
+
 ## [0.0.6] - 2026-07-27
 
 ### Added

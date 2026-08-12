@@ -44,8 +44,9 @@ Legend: ✅ list + delete via real STACKIT SDK · 🟡 registered, lister return
 | RabbitMQ | `RabbitMQInstance` | 🟡 | `services/rabbitmq` |
 | LoadBalancer | `LoadBalancer` | 🟡 | `services/loadbalancer` |
 | DNS | `DNSZone` | ✅ | `services/dns/v1api` |
+| Git | `GitInstance` | ✅ | `services/git/v1betaapi` |
 
-**8 of 20 resources fully working.** The CLI / config / auth / libnuke engine are functional; the per-resource SDK wiring lands incrementally. Pick one above and follow [`resources/compute-server.go`](resources/compute-server.go) as the reference pattern — see [Contributing](docs/contributing.md).
+**9 of 21 resources fully working.** The CLI / config / auth / libnuke engine are functional; the per-resource SDK wiring lands incrementally. Pick one above and follow [`resources/compute-server.go`](resources/compute-server.go) as the reference pattern — see [Contributing](docs/contributing.md).
 
 ## Features
 

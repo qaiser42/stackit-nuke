@@ -81,6 +81,7 @@ nav:
       - RabbitMQInstance: resources/rabbitmq-instance.md
       - LoadBalancer: resources/load-balancer.md
       - DNSZone: resources/dns-zone.md
+      - GitInstance: resources/git-instance.md
   - Development:
       - Contributing: contributing.md
       - Releases: releases.md

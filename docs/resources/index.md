@@ -23,5 +23,6 @@ Each STACKIT resource type known to `stackit-nuke` is listed below. The name in 
 | `RabbitMQInstance` | RabbitMQ | [rabbitmq-instance](rabbitmq-instance.md) |
 | `LoadBalancer` | LoadBalancer | [load-balancer](load-balancer.md) |
 | `DNSZone` | DNS | [dns-zone](dns-zone.md) |
+| `GitInstance` | Git | [git-instance](git-instance.md) |
 
 Run `stackit-nuke resource-types` to print the registered names from the binary itself.

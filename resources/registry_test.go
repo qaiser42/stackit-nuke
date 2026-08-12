@@ -33,6 +33,7 @@ var expected = []string{
 	"LoadBalancer",
 	"DNSZone",
 	"NetworkInterface",
+	"GitInstance",
 }
 
 func TestAllResourcesRegistered(t *testing.T) {
@@ -80,6 +81,7 @@ var realImpls = map[string]bool{
 	"FloatingIP":           true,
 	"PostgresFlexInstance": true,
 	"DNSZone":              true,
+	"GitInstance":          true,
 }
 
 func TestListersReturnEmpty(t *testing.T) {
