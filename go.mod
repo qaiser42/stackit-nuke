@@ -10,7 +10,7 @@ require (
 	github.com/stackitcloud/stackit-sdk-go/services/git v0.14.0
 	github.com/stackitcloud/stackit-sdk-go/services/iaas v1.13.0
 	github.com/stackitcloud/stackit-sdk-go/services/postgresflex v1.12.0
-	github.com/urfave/cli/v3 v3.10.1
+	github.com/urfave/cli/v3 v3.11.0
 	gopkg.in/yaml.v3 v3.0.1
 )
 
