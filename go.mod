@@ -4,7 +4,7 @@ go 1.27.0
 
 require (
 	github.com/ekristen/libnuke v1.3.0
-	github.com/sirupsen/logrus v1.10.1
+	github.com/sirupsen/logrus v1.10.2
 	github.com/stackitcloud/stackit-sdk-go/core v0.26.0
 	github.com/stackitcloud/stackit-sdk-go/services/dns v0.22.1
 	github.com/stackitcloud/stackit-sdk-go/services/git v0.14.0
