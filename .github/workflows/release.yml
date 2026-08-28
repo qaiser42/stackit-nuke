@@ -32,7 +32,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: sigstore/cosign-installer@v4.1.2
-      - uses: anchore/sbom-action/download-syft@v0.24.1
+      - uses: anchore/sbom-action/download-syft@v0.24.2
       - uses: ko-build/setup-ko@v0.10
         env:
           KO_DOCKER_REPO: ghcr.io/${{ github.repository }}
