@@ -40,9 +40,11 @@
       "groupName": "libnuke"
     },
     {
-      "description": "STACKIT SDK — manual, own PR so it doesn't block the group's automerge",
+      "description": "STACKIT SDK — own PR (easy to bisect/revert), auto-merged for minor + patch. Majors still gated by the gomod major rule above.",
       "matchPackageNames": ["github.com/stackitcloud/**"],
-      "automerge": false,
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true,
+      "automergeType": "pr",
       "groupName": "stackit sdk"
     }
   ],
