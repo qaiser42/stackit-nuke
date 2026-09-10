@@ -9,7 +9,7 @@ require (
 	github.com/stackitcloud/stackit-sdk-go/services/dns v0.23.1
 	github.com/stackitcloud/stackit-sdk-go/services/git v0.14.1
 	github.com/stackitcloud/stackit-sdk-go/services/iaas v1.14.3
-	github.com/stackitcloud/stackit-sdk-go/services/postgresflex v1.14.1
+	github.com/stackitcloud/stackit-sdk-go/services/postgresflex v1.15.0
 	github.com/urfave/cli/v3 v3.11.0
 	gopkg.in/yaml.v3 v3.0.1
 )
