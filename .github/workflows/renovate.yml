@@ -24,7 +24,7 @@ jobs:
   renovate:
     runs-on: ubuntu-latest
     steps:
-      - uses: renovatebot/github-action@v46.2.6
+      - uses: renovatebot/github-action@v46.3.0
         with:
           token: ${{ secrets.RENOVATE_TOKEN }}
         env:
