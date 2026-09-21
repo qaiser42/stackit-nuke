@@ -55,6 +55,8 @@ github.com/stackitcloud/stackit-sdk-go/services/iaas v1.14.1 h1:P8XhOi8TLA7NbLHh
 github.com/stackitcloud/stackit-sdk-go/services/iaas v1.14.1/go.mod h1:/QpOsaCOQjwGgQqG8y9xXqryp25AfkorPjInX9xIeOU=
 github.com/stackitcloud/stackit-sdk-go/services/iaas v1.14.3 h1:aDTHf72xgriApCHG9hW2oLd0d8/axo7VGDxex+uqCpA=
 github.com/stackitcloud/stackit-sdk-go/services/iaas v1.14.3/go.mod h1:y2mD2nWQ4aG93Yb8IsHfS0qLpxwVaHWVSN4tTvaF680=
+github.com/stackitcloud/stackit-sdk-go/services/iaas v1.14.4 h1:I+XePFdppgW3HRIj4emgWivm+9kWxc9KyEN6Ue4BnUk=
+github.com/stackitcloud/stackit-sdk-go/services/iaas v1.14.4/go.mod h1:fxbh3BWSlLye/aGAT/cbp0r6YbHEcnwPoNjt8hp3SqU=
 github.com/stackitcloud/stackit-sdk-go/services/postgresflex v1.12.0 h1:elIyrDVSYlEtigFO82SWnpfuJZdpv0b2SwvL3M+z9dA=
 github.com/stackitcloud/stackit-sdk-go/services/postgresflex v1.12.0/go.mod h1:yzlakB+f8ur4yAHR6lyCABO+HcEtZG3G2Faj6m5/uW8=
 github.com/stackitcloud/stackit-sdk-go/services/postgresflex v1.13.0 h1:o8+bH3763G5oU1Y8Bf5nkQ8kzqFO7su0VUpeSGKdoPY=
