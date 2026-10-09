@@ -5,7 +5,7 @@
 Each release publishes binaries for `linux`, `darwin`, `windows` × `amd64`/`arm64` to [GitHub Releases](https://github.com/qaiser42/stackit-nuke/releases). Checksums and SBOMs are signed with Cosign.
 
 ```bash
-VERSION=v0.1.0
+VERSION=v0.0.7
 OS=linux
 ARCH=amd64
 curl -L "https://github.com/qaiser42/stackit-nuke/releases/download/${VERSION}/stackit-nuke-${VERSION}-${OS}-${ARCH}.tar.gz" \
