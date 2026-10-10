@@ -47,6 +47,8 @@ github.com/stackitcloud/stackit-sdk-go/services/dns v0.23.0 h1:uHRXx5aQOBIlqE89c
 github.com/stackitcloud/stackit-sdk-go/services/dns v0.23.0/go.mod h1:FiYSv3D9rzgEVzi8Mpq5oYZBosrasa5uUYqVdEIbM1U=
 github.com/stackitcloud/stackit-sdk-go/services/dns v0.23.1 h1:6hm7oYJeR5Bu8d+PeCvVLWjUXh78pSfdsCTZ7lu5qdc=
 github.com/stackitcloud/stackit-sdk-go/services/dns v0.23.1/go.mod h1:t59gHqlbUzwV0yBuMHoUFQ8sOFXOYrhkNfneFolOHbY=
+github.com/stackitcloud/stackit-sdk-go/services/dns v0.24.0 h1:IXbakKvsCwMPCz7xn2tMAkgVDxg6XYqO6hGDFnXSUXk=
+github.com/stackitcloud/stackit-sdk-go/services/dns v0.24.0/go.mod h1:D0iv6XBYkaEwTjbBeom0VTZnwQMfwb48FC8R2jRg80c=
 github.com/stackitcloud/stackit-sdk-go/services/git v0.14.0 h1:VZBneGprCmHqckcSMPs3puBlK8rBpLMtYKmBktwdoVE=
 github.com/stackitcloud/stackit-sdk-go/services/git v0.14.0/go.mod h1:YZEL+gaK+ELn5E9VtK8yvz5RcmCBH+JkRpf6YbNVSbM=
 github.com/stackitcloud/stackit-sdk-go/services/git v0.14.1 h1:7R5peSRer3Y83mfB6wcdCP0vhEjsq4myUdVhl24q6to=
