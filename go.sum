@@ -49,6 +49,8 @@ github.com/stackitcloud/stackit-sdk-go/services/dns v0.23.1 h1:6hm7oYJeR5Bu8d+Pe
 github.com/stackitcloud/stackit-sdk-go/services/dns v0.23.1/go.mod h1:t59gHqlbUzwV0yBuMHoUFQ8sOFXOYrhkNfneFolOHbY=
 github.com/stackitcloud/stackit-sdk-go/services/dns v0.24.0 h1:IXbakKvsCwMPCz7xn2tMAkgVDxg6XYqO6hGDFnXSUXk=
 github.com/stackitcloud/stackit-sdk-go/services/dns v0.24.0/go.mod h1:D0iv6XBYkaEwTjbBeom0VTZnwQMfwb48FC8R2jRg80c=
+github.com/stackitcloud/stackit-sdk-go/services/dns v0.25.0 h1:Yn4etadrdEEPU8YcbvF7a/UExSqri+jUC62w62ic4N8=
+github.com/stackitcloud/stackit-sdk-go/services/dns v0.25.0/go.mod h1:D0iv6XBYkaEwTjbBeom0VTZnwQMfwb48FC8R2jRg80c=
 github.com/stackitcloud/stackit-sdk-go/services/git v0.14.0 h1:VZBneGprCmHqckcSMPs3puBlK8rBpLMtYKmBktwdoVE=
 github.com/stackitcloud/stackit-sdk-go/services/git v0.14.0/go.mod h1:YZEL+gaK+ELn5E9VtK8yvz5RcmCBH+JkRpf6YbNVSbM=
 github.com/stackitcloud/stackit-sdk-go/services/git v0.14.1 h1:7R5peSRer3Y83mfB6wcdCP0vhEjsq4myUdVhl24q6to=
@@ -65,6 +67,8 @@ github.com/stackitcloud/stackit-sdk-go/services/iaas v1.14.4 h1:I+XePFdppgW3HRIj
 github.com/stackitcloud/stackit-sdk-go/services/iaas v1.14.4/go.mod h1:fxbh3BWSlLye/aGAT/cbp0r6YbHEcnwPoNjt8hp3SqU=
 github.com/stackitcloud/stackit-sdk-go/services/iaas v1.14.5 h1:CVRo4/hCy6vLlh6LQjQikTDnh/0KF43nRhKsiicxyXc=
 github.com/stackitcloud/stackit-sdk-go/services/iaas v1.14.5/go.mod h1:oJmNZY04vvjrQI+y91ZZWOQiCAREcCldkh6cib+YtP0=
+github.com/stackitcloud/stackit-sdk-go/services/iaas v1.15.0 h1:DZEd4ORWEAu3/t92xLD7ah5gCshP+n5mOYxdOzdiZLc=
+github.com/stackitcloud/stackit-sdk-go/services/iaas v1.15.0/go.mod h1:o6Mt/ZUB/3qvIwtu4B57m9IlyaUxAFS2Tu5XImiZxCE=
 github.com/stackitcloud/stackit-sdk-go/services/postgresflex v1.12.0 h1:elIyrDVSYlEtigFO82SWnpfuJZdpv0b2SwvL3M+z9dA=
 github.com/stackitcloud/stackit-sdk-go/services/postgresflex v1.12.0/go.mod h1:yzlakB+f8ur4yAHR6lyCABO+HcEtZG3G2Faj6m5/uW8=
 github.com/stackitcloud/stackit-sdk-go/services/postgresflex v1.13.0 h1:o8+bH3763G5oU1Y8Bf5nkQ8kzqFO7su0VUpeSGKdoPY=
