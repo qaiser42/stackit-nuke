@@ -27,6 +27,11 @@
       "groupName": "go modules (non-major)"
     },
     {
+      "description": "Go toolchain — bump the go.mod `go` directive and setup-go `go-version` in one PR. Split, the go.mod PR fails CI (newer go directive than CI's Go) until the workflow PR lands first.",
+      "matchDepNames": ["go"],
+      "groupName": "go toolchain"
+    },
+    {
       "description": "Go module major upgrades change the import path and usually break the API — they need a manual code migration. Gate behind Dependency Dashboard approval so renovate surfaces them but never auto-opens an uncompilable PR.",
       "matchManagers": ["gomod"],
       "matchUpdateTypes": ["major"],
