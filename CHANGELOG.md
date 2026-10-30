@@ -6,6 +6,8 @@ to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.0.8] - 2026-10-30
+
 ### Added
 - New `MariaDBInstance` resource type: real list + delete via STACKIT
   MariaDB v2 SDK. Deletion is asynchronous and polled by libnuke until gone
