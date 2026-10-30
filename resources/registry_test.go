@@ -85,6 +85,7 @@ var realImpls = map[string]bool{
 	"GitInstance":          true,
 	"MariaDBInstance":      true,
 	"ComputeSnapshot":      true,
+	"ComputeKeypair":       true,
 }
 
 func TestListersReturnEmpty(t *testing.T) {
