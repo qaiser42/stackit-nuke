@@ -4,7 +4,7 @@ go 1.27.3
 
 require (
 	github.com/pulumi/pulumi/sdk/v3 v3.273.0
-	github.com/stackitcloud/pulumi-stackit/sdk v0.0.0-20260506131103-ab38019a53cf
+	github.com/stackitcloud/pulumi-stackit/sdk v0.0.0-20261028083616-4ee7ac4d7806
 )
 
 require (
@@ -56,7 +56,6 @@ require (
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/kevinburke/ssh_config v1.6.0 // indirect
 	github.com/klauspost/compress v1.18.7 // indirect
-	github.com/klauspost/cpuid/v2 v2.3.0 // indirect
 	github.com/lucasb-eyer/go-colorful v1.3.0 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/mattn/go-localereader v0.0.1 // indirect
@@ -71,7 +70,6 @@ require (
 	github.com/opentracing/basictracer-go v1.1.0 // indirect
 	github.com/opentracing/opentracing-go v1.2.0 // indirect
 	github.com/pgavlin/fx v0.1.6 // indirect
-	github.com/pgavlin/fx/v2 v2.0.12 // indirect
 	github.com/pjbgf/sha1cd v0.7.0 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pkg/term v1.1.0 // indirect

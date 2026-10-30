@@ -61,11 +61,16 @@ func main() {
 		if imageVersion == "" {
 			imageVersion = "24.04"
 		}
+		// x86 and ARM64 Ubuntu images share distro + version, so the name
+		// picks the architecture.
+		imageNameRegex := cfg.Get("imageNameRegex")
+		if imageNameRegex == "" {
+			imageNameRegex = `^Ubuntu 24\.04$`
+		}
 		serverCount, err := cfg.TryInt("serverCount")
 		if err != nil {
 			serverCount = 2
 		}
-		_ = region
 
 		var resolvedImageId pulumi.StringInput
 		if imageIdOverride != "" {
@@ -73,6 +78,7 @@ func main() {
 		} else {
 			img := stackit.GetImageV2Output(ctx, stackit.GetImageV2OutputArgs{
 				ProjectId: pulumi.String(projectId),
+				NameRegex: pulumi.String(imageNameRegex),
 				Filter: &stackit.GetImageV2FilterArgs{
 					Distro:  pulumi.String(imageDistro),
 					Version: pulumi.String(imageVersion),
@@ -80,7 +86,7 @@ func main() {
 			}, pulumi.Provider(provider))
 			resolvedImageId = img.ImageId().ApplyT(func(id *string) (string, error) {
 				if id == nil || *id == "" {
-					return "", fmt.Errorf("no STACKIT image matched distro=%s version=%s in project %s", imageDistro, imageVersion, projectId)
+					return "", fmt.Errorf("no STACKIT image matched name=%s distro=%s version=%s in project %s", imageNameRegex, imageDistro, imageVersion, projectId)
 				}
 				return *id, nil
 			}).(pulumi.StringOutput)
@@ -162,6 +168,62 @@ func main() {
 		}
 
 		// -------------------------------------------------------------------
+		// SSH keypair — owned by the service account, not the project. The
+		// private half of this throwaway key was discarded.
+		// -------------------------------------------------------------------
+		keypair, err := stackit.NewKeyPair(ctx, "dev-keypair", &stackit.KeyPairArgs{
+			Name:      pulumi.String("stackit-nuke-dev"),
+			PublicKey: pulumi.String("ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEReP6pn9PYlrrV5CqGHs3DlnJCaXo7fpdCD3U2+7FeQ stackit-nuke-dev"),
+			Labels:    labels,
+		}, pulumi.Provider(provider))
+		if err != nil {
+			return err
+		}
+
+		// -------------------------------------------------------------------
+		// MariaDB — smallest single-node plan.
+		// -------------------------------------------------------------------
+		mariadb, err := stackit.NewMariadbInstance(ctx, "dev-mariadb", &stackit.MariadbInstanceArgs{
+			ProjectId: pulumi.String(projectId),
+			Region:    pulumi.String(region),
+			Name:      pulumi.String("stackit-nuke-dev"),
+			Version:   pulumi.String("10.11"),
+			PlanName:  pulumi.String("stackit-mariadb-1.4.10-single"),
+		}, pulumi.Provider(provider))
+		if err != nil {
+			return err
+		}
+
+		// -------------------------------------------------------------------
+		// Object Storage bucket + S3 credentials, so an object can be put in
+		// the bucket before nuking (see README).
+		// -------------------------------------------------------------------
+		bucket, err := stackit.NewObjectstorageBucket(ctx, "dev-bucket", &stackit.ObjectstorageBucketArgs{
+			ProjectId: pulumi.String(projectId),
+			Region:    pulumi.String(region),
+			Name:      pulumi.String(fmt.Sprintf("stackit-nuke-dev-%s", projectId[:8])),
+		}, pulumi.Provider(provider))
+		if err != nil {
+			return err
+		}
+		credentialsGroup, err := stackit.NewObjectstorageCredentialsGroup(ctx, "dev-credentials-group", &stackit.ObjectstorageCredentialsGroupArgs{
+			ProjectId: pulumi.String(projectId),
+			Region:    pulumi.String(region),
+			Name:      pulumi.String("stackit-nuke-dev"),
+		}, pulumi.Provider(provider), pulumi.DependsOn([]pulumi.Resource{bucket}))
+		if err != nil {
+			return err
+		}
+		credential, err := stackit.NewObjectstorageCredential(ctx, "dev-credential", &stackit.ObjectstorageCredentialArgs{
+			ProjectId:          pulumi.String(projectId),
+			Region:             pulumi.String(region),
+			CredentialsGroupId: credentialsGroup.CredentialsGroupId,
+		}, pulumi.Provider(provider))
+		if err != nil {
+			return err
+		}
+
+		// -------------------------------------------------------------------
 		// Outputs — handy for confirming what stackit-nuke should see.
 		// -------------------------------------------------------------------
 		serverIds := make(pulumi.StringArray, len(servers))
@@ -174,6 +236,11 @@ func main() {
 		ctx.Export("serverIds", serverIds)
 		ctx.Export("serverNames", serverNames)
 		ctx.Export("volumeId", volume.VolumeId)
+		ctx.Export("keypairName", keypair.Name)
+		ctx.Export("mariadbInstanceId", mariadb.InstanceId)
+		ctx.Export("bucketName", bucket.Name)
+		ctx.Export("s3AccessKey", pulumi.ToSecret(credential.AccessKey))
+		ctx.Export("s3SecretAccessKey", credential.SecretAccessKey)
 		return nil
 	})
 }
