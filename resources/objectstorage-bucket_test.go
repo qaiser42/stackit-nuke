@@ -2,10 +2,13 @@ package resources
 
 import (
 	"context"
+	"errors"
+	"fmt"
 	"strings"
 	"testing"
 
 	"github.com/ekristen/libnuke/pkg/registry"
+	"github.com/stackitcloud/stackit-sdk-go/core/oapierror"
 
 	"github.com/qaiser42/stackit-nuke/pkg/stackit"
 )
@@ -63,5 +66,44 @@ func TestObjectStorageBucketRegistration(t *testing.T) {
 	}
 	if regs.Lister == nil || regs.Resource == nil {
 		t.Error("lister or resource nil in registration")
+	}
+}
+
+func TestS3EndpointFromURL(t *testing.T) {
+	for in, want := range map[string]string{
+		"https://object.storage.eu01.onstackit.cloud/my-bucket": "object.storage.eu01.onstackit.cloud",
+		"":  "",
+		"%": "",
+	} {
+		if got := s3EndpointFromURL(in); got != want {
+			t.Errorf("s3EndpointFromURL(%q) = %q, want %q", in, got, want)
+		}
+	}
+}
+
+func TestIsBucketNotEmpty(t *testing.T) {
+	notEmpty := &oapierror.GenericOpenAPIError{
+		StatusCode: 422,
+		Body:       []byte(`{"detail":[{"key":"bucket.not_empty","msg":"The bucket is not empty"}]}`),
+	}
+	if !isBucketNotEmpty(fmt.Errorf("delete bucket: %w", error(notEmpty))) {
+		t.Error("expected wrapped 422 bucket.not_empty to match")
+	}
+	for _, err := range []error{
+		nil,
+		errors.New("boom"),
+		&oapierror.GenericOpenAPIError{StatusCode: 422, Body: []byte(`{"detail":[{"key":"other"}]}`)},
+		&oapierror.GenericOpenAPIError{StatusCode: 404, Body: []byte(`bucket.not_empty`)},
+	} {
+		if isBucketNotEmpty(err) {
+			t.Errorf("isBucketNotEmpty(%v) = true, want false", err)
+		}
+	}
+}
+
+func TestObjectStorageBucket_EmptyWithoutEndpointErrors(t *testing.T) {
+	r := &ObjectStorageBucket{BaseResource: &BaseResource{ProjectID: "p", Region: "eu01"}, Name: "b"}
+	if err := r.empty(context.Background()); err == nil || !strings.Contains(err.Error(), "no S3 endpoint") {
+		t.Errorf("empty() = %v, want missing endpoint error", err)
 	}
 }
