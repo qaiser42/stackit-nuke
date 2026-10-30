@@ -1,11 +1,9 @@
 name: stackit-nuke-dev-infra
 runtime: go
 description: |
-  Throwaway STACKIT infrastructure for testing stackit-nuke locally.
-
-  Spins up: 1 network, 1 network interface, N servers (default 2), 1 standalone
-  volume. Use `pulumi up` to deploy, then `stackit-nuke run ...` to delete,
-  then `pulumi destroy` to clean any leftovers.
+  Throwaway STACKIT infra for testing stackit-nuke: network, NICs, servers,
+  volume, keypair, MariaDB, bucket. `pulumi up`, run stackit-nuke, then
+  `pulumi destroy` to clean any leftovers.
 
 config:
   stackit-nuke-dev-infra:projectId:
