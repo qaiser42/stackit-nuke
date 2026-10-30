@@ -24,7 +24,7 @@ func init() {
 		Scope:     stackit.ProjectScope,
 		Resource:  &ComputeVolume{},
 		Lister:    &ComputeVolumeLister{},
-		DependsOn: []string{ComputeServerResource},
+		DependsOn: []string{ComputeServerResource, ComputeSnapshotResource},
 	})
 }
 

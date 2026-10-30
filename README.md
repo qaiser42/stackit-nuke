@@ -26,14 +26,13 @@ Legend: ✅ list + delete via real STACKIT SDK · 🟡 registered, lister return
 |---|---|---|---|
 | IaaS / compute | `ComputeServer` | ✅ | `stackit-sdk-go/services/iaas/v2api` |
 | IaaS / compute | `ComputeVolume` | ✅ | `iaas/v2api` |
-| IaaS / compute | `ComputeSnapshot` | 🟡 | `iaas/v2api` |
-| IaaS / compute | `ComputeKeypair` | 🟡 | `iaas/v2api` |
+| IaaS / compute | `ComputeSnapshot` | ✅ | `iaas/v2api` |
+| IaaS / compute | `ComputeKeypair` | ✅ | `iaas/v2api` |
 | IaaS / network | `Network` | ✅ | `iaas/v2api` |
 | IaaS / network | `NetworkInterface` | ✅ | `iaas/v2api` |
-| IaaS / network | `Subnet` | 🟡 | `iaas/v2api` |
 | IaaS / network | `SecurityGroup` | ✅ | `iaas/v2api` |
 | IaaS / network | `FloatingIP` | ✅ | `iaas/v2api` |
-| Object Storage | `ObjectStorageBucket` | 🟡 | `services/objectstorage` |
+| Object Storage | `ObjectStorageBucket` | ✅ | `services/objectstorage/v2api` |
 | Object Storage | `ObjectStorageObject` | 🟡 | `services/objectstorage` |
 | SKE | `SKECluster` | 🟡 | `services/ske` |
 | PostgresFlex | `PostgresFlexInstance` | ✅ | `services/postgresflex/v2api` |
@@ -44,8 +43,9 @@ Legend: ✅ list + delete via real STACKIT SDK · 🟡 registered, lister return
 | LoadBalancer | `LoadBalancer` | 🟡 | `services/loadbalancer` |
 | DNS | `DNSZone` | ✅ | `services/dns/v1api` |
 | Git | `GitInstance` | ✅ | `services/git/v1betaapi` |
+| MariaDB | `MariaDBInstance` | ✅ | `services/mariadb/v2api` |
 
-**9 of 20 resources fully working.** The CLI / config / auth / libnuke engine are functional; the per-resource SDK wiring lands incrementally. Pick one above and follow [`resources/compute-server.go`](resources/compute-server.go) as the reference pattern — see [Contributing](docs/contributing.md).
+**13 of 20 resources fully working.** The CLI / config / auth / libnuke engine are functional; the per-resource SDK wiring lands incrementally. Pick one above and follow [`resources/compute-server.go`](resources/compute-server.go) as the reference pattern — see [Contributing](docs/contributing.md).
 
 ## Features
 

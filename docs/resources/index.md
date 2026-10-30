@@ -9,7 +9,6 @@ Each STACKIT resource type known to `stackit-nuke` is listed below. The name in 
 | `ComputeSnapshot` | IaaS (compute) | [compute-snapshot](compute-snapshot.md) |
 | `ComputeKeypair` | IaaS (compute) | [compute-keypair](compute-keypair.md) |
 | `Network` | IaaS (network) | [network](network.md) |
-| `Subnet` | IaaS (network) | [subnet](subnet.md) |
 | `SecurityGroup` | IaaS (network) | [security-group](security-group.md) |
 | `FloatingIP` | IaaS (network) | [floating-ip](floating-ip.md) |
 | `ObjectStorageBucket` | Object Storage | [object-storage-bucket](object-storage-bucket.md) |
@@ -23,5 +22,6 @@ Each STACKIT resource type known to `stackit-nuke` is listed below. The name in 
 | `LoadBalancer` | LoadBalancer | [load-balancer](load-balancer.md) |
 | `DNSZone` | DNS | [dns-zone](dns-zone.md) |
 | `GitInstance` | Git | [git-instance](git-instance.md) |
+| `MariaDBInstance` | MariaDB | [mariadb-instance](mariadb-instance.md) |
 
 Run `stackit-nuke resource-types` to print the registered names from the binary itself.
