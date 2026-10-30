@@ -23,7 +23,6 @@ var expected = []string{
 	"SecurityGroup",
 	"FloatingIP",
 	"ObjectStorageBucket",
-	"ObjectStorageObject",
 	"SKECluster",
 	"PostgresFlexInstance",
 	"MongoDBFlexInstance",

@@ -6,6 +6,11 @@ to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Removed
+- `ObjectStorageObject` stub resource type: the STACKIT Object Storage
+  management API has no object endpoints (objects are only reachable via
+  S3), and deleting a bucket removes all objects it contains
+
 ## [0.0.7] - 2026-08-12
 
 ### Added

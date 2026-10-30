@@ -72,7 +72,6 @@ nav:
       - SecurityGroup: resources/security-group.md
       - FloatingIP: resources/floating-ip.md
       - ObjectStorageBucket: resources/object-storage-bucket.md
-      - ObjectStorageObject: resources/object-storage-object.md
       - SKECluster: resources/ske-cluster.md
       - PostgresFlexInstance: resources/postgres-flex-instance.md
       - MongoDBFlexInstance: resources/mongodb-flex-instance.md

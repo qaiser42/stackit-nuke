@@ -14,7 +14,6 @@ Each STACKIT resource type known to `stackit-nuke` is listed below. The name in 
 | `SecurityGroup` | IaaS (network) | [security-group](security-group.md) |
 | `FloatingIP` | IaaS (network) | [floating-ip](floating-ip.md) |
 | `ObjectStorageBucket` | Object Storage | [object-storage-bucket](object-storage-bucket.md) |
-| `ObjectStorageObject` | Object Storage | [object-storage-object](object-storage-object.md) |
 | `SKECluster` | SKE (Kubernetes) | [ske-cluster](ske-cluster.md) |
 | `PostgresFlexInstance` | PostgresFlex | [postgres-flex-instance](postgres-flex-instance.md) |
 | `MongoDBFlexInstance` | MongoDBFlex | [mongodb-flex-instance](mongodb-flex-instance.md) |
