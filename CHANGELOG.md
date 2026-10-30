@@ -6,6 +6,15 @@ to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Added
+- Real list + delete via STACKIT IaaS v2 SDK for `ComputeSnapshot`:
+  snapshots in `DELETED` state are skipped, in-flight deletes not repeated
+- Real docs for `compute-snapshot` resource page
+
+### Changed
+- `ComputeVolume` now depends on `ComputeSnapshot`, so snapshots are removed
+  before the volumes they were taken from
+
 ## [0.0.7] - 2026-08-12
 
 ### Added
