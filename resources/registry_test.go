@@ -86,6 +86,7 @@ var realImpls = map[string]bool{
 	"MariaDBInstance":      true,
 	"ComputeSnapshot":      true,
 	"ComputeKeypair":       true,
+	"ObjectStorageBucket":  true,
 }
 
 func TestListersReturnEmpty(t *testing.T) {
