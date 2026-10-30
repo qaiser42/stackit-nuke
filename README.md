@@ -64,7 +64,7 @@ Legend: ✅ list + delete via real STACKIT SDK · 🟡 registered, lister return
 dist install qaiser42/stackit-nuke
 
 # Pre-built binary
-VERSION=v0.0.7
+VERSION=v0.0.8
 curl -L "https://github.com/qaiser42/stackit-nuke/releases/download/${VERSION}/stackit-nuke-${VERSION}-linux-amd64.tar.gz" \
   | tar xz -C /usr/local/bin stackit-nuke
 
