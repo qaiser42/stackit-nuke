@@ -18,12 +18,9 @@ var expected = []string{
 	"ComputeSnapshot",
 	"ComputeKeypair",
 	"Network",
-	"Subnet",
-	"Router",
 	"SecurityGroup",
 	"FloatingIP",
 	"ObjectStorageBucket",
-	"ObjectStorageObject",
 	"SKECluster",
 	"PostgresFlexInstance",
 	"MongoDBFlexInstance",
@@ -34,6 +31,7 @@ var expected = []string{
 	"DNSZone",
 	"NetworkInterface",
 	"GitInstance",
+	"MariaDBInstance",
 }
 
 func TestAllResourcesRegistered(t *testing.T) {
@@ -82,6 +80,10 @@ var realImpls = map[string]bool{
 	"PostgresFlexInstance": true,
 	"DNSZone":              true,
 	"GitInstance":          true,
+	"MariaDBInstance":      true,
+	"ComputeSnapshot":      true,
+	"ComputeKeypair":       true,
+	"ObjectStorageBucket":  true,
 }
 
 func TestListersReturnEmpty(t *testing.T) {

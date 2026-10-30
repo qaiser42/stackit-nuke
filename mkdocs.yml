@@ -67,12 +67,9 @@ nav:
       - ComputeSnapshot: resources/compute-snapshot.md
       - ComputeKeypair: resources/compute-keypair.md
       - Network: resources/network.md
-      - Subnet: resources/subnet.md
-      - Router: resources/router.md
       - SecurityGroup: resources/security-group.md
       - FloatingIP: resources/floating-ip.md
       - ObjectStorageBucket: resources/object-storage-bucket.md
-      - ObjectStorageObject: resources/object-storage-object.md
       - SKECluster: resources/ske-cluster.md
       - PostgresFlexInstance: resources/postgres-flex-instance.md
       - MongoDBFlexInstance: resources/mongodb-flex-instance.md
@@ -82,6 +79,7 @@ nav:
       - LoadBalancer: resources/load-balancer.md
       - DNSZone: resources/dns-zone.md
       - GitInstance: resources/git-instance.md
+      - MariaDBInstance: resources/mariadb-instance.md
   - Development:
       - Contributing: contributing.md
       - Releases: releases.md
