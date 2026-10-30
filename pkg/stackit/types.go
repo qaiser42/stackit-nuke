@@ -13,6 +13,7 @@ const (
 type ListerOpts struct {
 	OrganizationID string
 	ProjectID      string
+	ProjectIDs     []string
 	Region         string
 	Regions        []string
 	Credentials    *Credentials

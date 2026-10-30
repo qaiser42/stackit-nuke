@@ -54,6 +54,8 @@ github.com/stackitcloud/stackit-sdk-go/services/git v0.15.0 h1:yQq0J3nhfQ2V9yLhk
 github.com/stackitcloud/stackit-sdk-go/services/git v0.15.0/go.mod h1:om68OYj0xYfMuSLEP4v/bg/kgqcFS6xDVApZXHlWr5E=
 github.com/stackitcloud/stackit-sdk-go/services/iaas v1.15.1 h1:5D0ABveu3SZyB7DBkVJcCSS4fr1TiMmfdJA98TgDn/o=
 github.com/stackitcloud/stackit-sdk-go/services/iaas v1.15.1/go.mod h1:o6Mt/ZUB/3qvIwtu4B57m9IlyaUxAFS2Tu5XImiZxCE=
+github.com/stackitcloud/stackit-sdk-go/services/mariadb v1.4.0 h1:LFpdvASJnTv5Y/PEfwgK0pn7ixXLgcUmLt2cRTg979g=
+github.com/stackitcloud/stackit-sdk-go/services/mariadb v1.4.0/go.mod h1:GpFHOEVEq+Pog9dWPMvGeF4mEvB+MVLIRh3/jB1isUI=
 github.com/stackitcloud/stackit-sdk-go/services/objectstorage v1.13.0 h1:lVFUq1AVW2wgiKjtcr8FeEY+Jxw3hBXyh7I+qWW6ad4=
 github.com/stackitcloud/stackit-sdk-go/services/objectstorage v1.13.0/go.mod h1:HAQToFb4LrI6jdOdOowApI3KLF3D0KzE9ne0Lty4wkw=
 github.com/stackitcloud/stackit-sdk-go/services/postgresflex v1.16.0 h1:bWeC7GzQP/IddeO2FesXxRmRrkgVClU2YYaSz099nqk=
