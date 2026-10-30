@@ -9,7 +9,6 @@ Each STACKIT resource type known to `stackit-nuke` is listed below. The name in 
 | `ComputeSnapshot` | IaaS (compute) | [compute-snapshot](compute-snapshot.md) |
 | `ComputeKeypair` | IaaS (compute) | [compute-keypair](compute-keypair.md) |
 | `Network` | IaaS (network) | [network](network.md) |
-| `Router` | IaaS (network) | [router](router.md) |
 | `SecurityGroup` | IaaS (network) | [security-group](security-group.md) |
 | `FloatingIP` | IaaS (network) | [floating-ip](floating-ip.md) |
 | `ObjectStorageBucket` | Object Storage | [object-storage-bucket](object-storage-bucket.md) |

@@ -31,6 +31,9 @@ to [Semantic Versioning](https://semver.org/).
 ### Removed
 - `Subnet` stub resource type: STACKIT IaaS has no subnet API. A network
   carries its own IPv4/IPv6 prefixes and is removed by `Network`
+- `Router` stub resource type: STACKIT IaaS has no project-scoped router.
+  Routing is part of the network (`routed`); routing tables live in
+  organization-level network areas shared across projects
 
 ## [0.0.7] - 2026-08-12
 

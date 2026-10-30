@@ -67,7 +67,6 @@ nav:
       - ComputeSnapshot: resources/compute-snapshot.md
       - ComputeKeypair: resources/compute-keypair.md
       - Network: resources/network.md
-      - Router: resources/router.md
       - SecurityGroup: resources/security-group.md
       - FloatingIP: resources/floating-ip.md
       - ObjectStorageBucket: resources/object-storage-bucket.md
