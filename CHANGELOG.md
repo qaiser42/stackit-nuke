@@ -6,6 +6,12 @@ to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Added
+- Real list + delete via STACKIT Object Storage v2 SDK for
+  `ObjectStorageBucket`: deleting a bucket removes its objects; projects
+  without Object Storage enabled list no buckets
+- Real docs for `object-storage-bucket` resource page
+
 ## [0.0.7] - 2026-08-12
 
 ### Added

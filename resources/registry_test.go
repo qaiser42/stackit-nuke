@@ -82,6 +82,7 @@ var realImpls = map[string]bool{
 	"PostgresFlexInstance": true,
 	"DNSZone":              true,
 	"GitInstance":          true,
+	"ObjectStorageBucket":  true,
 }
 
 func TestListersReturnEmpty(t *testing.T) {
