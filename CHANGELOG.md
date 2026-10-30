@@ -6,6 +6,13 @@ to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Added
+- Real list + delete via STACKIT IaaS v2 SDK for `ComputeKeypair`: keypairs
+  belong to the authenticated identity, so they are listed once per run
+  (first project, first region)
+- `ListerOpts.ProjectIDs` so listers can detect the first project's scan
+- Real docs for `compute-keypair` resource page
+
 ## [0.0.7] - 2026-08-12
 
 ### Added
