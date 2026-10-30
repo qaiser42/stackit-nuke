@@ -10,6 +10,13 @@ to [Semantic Versioning](https://semver.org/).
 - New `MariaDBInstance` resource type: real list + delete via STACKIT
   MariaDB v2 SDK. Deletion is asynchronous and polled by libnuke until gone
 - Docs page for `mariadb-instance`
+- Real list + delete via STACKIT IaaS v2 SDK for `ComputeSnapshot`:
+  snapshots in `DELETED` state are skipped, in-flight deletes not repeated
+- Real docs for `compute-snapshot` resource page
+
+### Changed
+- `ComputeVolume` now depends on `ComputeSnapshot`, so snapshots are removed
+  before the volumes they were taken from
 
 ## [0.0.7] - 2026-08-12
 

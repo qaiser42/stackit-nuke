@@ -84,6 +84,7 @@ var realImpls = map[string]bool{
 	"DNSZone":              true,
 	"GitInstance":          true,
 	"MariaDBInstance":      true,
+	"ComputeSnapshot":      true,
 }
 
 func TestListersReturnEmpty(t *testing.T) {
