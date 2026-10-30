@@ -31,7 +31,6 @@ Legend: ✅ list + delete via real STACKIT SDK · 🟡 registered, lister return
 | IaaS / network | `Network` | ✅ | `iaas/v2api` |
 | IaaS / network | `NetworkInterface` | ✅ | `iaas/v2api` |
 | IaaS / network | `Subnet` | 🟡 | `iaas/v2api` |
-| IaaS / network | `Router` | 🟡 | `iaas/v2api` |
 | IaaS / network | `SecurityGroup` | ✅ | `iaas/v2api` |
 | IaaS / network | `FloatingIP` | ✅ | `iaas/v2api` |
 | Object Storage | `ObjectStorageBucket` | 🟡 | `services/objectstorage` |
@@ -46,7 +45,7 @@ Legend: ✅ list + delete via real STACKIT SDK · 🟡 registered, lister return
 | DNS | `DNSZone` | ✅ | `services/dns/v1api` |
 | Git | `GitInstance` | ✅ | `services/git/v1betaapi` |
 
-**9 of 21 resources fully working.** The CLI / config / auth / libnuke engine are functional; the per-resource SDK wiring lands incrementally. Pick one above and follow [`resources/compute-server.go`](resources/compute-server.go) as the reference pattern — see [Contributing](docs/contributing.md).
+**9 of 20 resources fully working.** The CLI / config / auth / libnuke engine are functional; the per-resource SDK wiring lands incrementally. Pick one above and follow [`resources/compute-server.go`](resources/compute-server.go) as the reference pattern — see [Contributing](docs/contributing.md).
 
 ## Features
 

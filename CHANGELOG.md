@@ -6,6 +6,11 @@ to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Removed
+- `Router` stub resource type: STACKIT IaaS has no project-scoped router.
+  Routing is part of the network (`routed`); routing tables live in
+  organization-level network areas shared across projects
+
 ## [0.0.7] - 2026-08-12
 
 ### Added

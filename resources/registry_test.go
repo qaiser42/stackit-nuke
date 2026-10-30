@@ -19,7 +19,6 @@ var expected = []string{
 	"ComputeKeypair",
 	"Network",
 	"Subnet",
-	"Router",
 	"SecurityGroup",
 	"FloatingIP",
 	"ObjectStorageBucket",
