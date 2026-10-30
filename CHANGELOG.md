@@ -34,6 +34,9 @@ to [Semantic Versioning](https://semver.org/).
 - `Router` stub resource type: STACKIT IaaS has no project-scoped router.
   Routing is part of the network (`routed`); routing tables live in
   organization-level network areas shared across projects
+- `ObjectStorageObject` stub resource type: the STACKIT Object Storage
+  management API has no object endpoints (objects are only reachable via
+  S3); `ObjectStorageBucket` empties a bucket over S3 before deleting it
 
 ## [0.0.7] - 2026-08-12
 
