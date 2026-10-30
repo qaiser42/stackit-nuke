@@ -61,6 +61,12 @@ func main() {
 		if imageVersion == "" {
 			imageVersion = "24.04"
 		}
+		// x86 and ARM64 Ubuntu images share distro + version, so the name
+		// picks the architecture.
+		imageNameRegex := cfg.Get("imageNameRegex")
+		if imageNameRegex == "" {
+			imageNameRegex = `^Ubuntu 24\.04$`
+		}
 		serverCount, err := cfg.TryInt("serverCount")
 		if err != nil {
 			serverCount = 2
@@ -72,6 +78,7 @@ func main() {
 		} else {
 			img := stackit.GetImageV2Output(ctx, stackit.GetImageV2OutputArgs{
 				ProjectId: pulumi.String(projectId),
+				NameRegex: pulumi.String(imageNameRegex),
 				Filter: &stackit.GetImageV2FilterArgs{
 					Distro:  pulumi.String(imageDistro),
 					Version: pulumi.String(imageVersion),
@@ -79,7 +86,7 @@ func main() {
 			}, pulumi.Provider(provider))
 			resolvedImageId = img.ImageId().ApplyT(func(id *string) (string, error) {
 				if id == nil || *id == "" {
-					return "", fmt.Errorf("no STACKIT image matched distro=%s version=%s in project %s", imageDistro, imageVersion, projectId)
+					return "", fmt.Errorf("no STACKIT image matched name=%s distro=%s version=%s in project %s", imageNameRegex, imageDistro, imageVersion, projectId)
 				}
 				return *id, nil
 			}).(pulumi.StringOutput)

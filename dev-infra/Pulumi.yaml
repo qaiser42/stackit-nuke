@@ -25,15 +25,17 @@ config:
     default: ""
   stackit-nuke-dev-infra:imageDistro:
     description: |
-      Image distro filter when imageId is empty. Use `ubuntu` for Intel/AMD
-      flavors (g1a, g2, g2i) and `ubuntu-arm64` for ARM flavors.
+      Image distro filter when imageId is empty.
     default: ubuntu
   stackit-nuke-dev-infra:imageVersion:
     description: Image distro version when imageId is empty
     default: "24.04"
   stackit-nuke-dev-infra:imageNameRegex:
-    description: Image name regex used when imageId is empty
-    default: "^Ubuntu 24\\.04.*"
+    description: |
+      Image name regex used when imageId is empty. x86 and ARM64 images share
+      distro + version, so this picks the architecture: `^Ubuntu 24\.04$` for
+      Intel/AMD flavors (g1a, g2, g2i), `^Ubuntu 24\.04 ARM64$` for ARM.
+    default: "^Ubuntu 24\\.04$"
   stackit-nuke-dev-infra:serverCount:
     description: Number of servers to spin up
     default: 2
