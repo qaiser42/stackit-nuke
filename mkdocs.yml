@@ -67,7 +67,6 @@ nav:
       - ComputeSnapshot: resources/compute-snapshot.md
       - ComputeKeypair: resources/compute-keypair.md
       - Network: resources/network.md
-      - Subnet: resources/subnet.md
       - Router: resources/router.md
       - SecurityGroup: resources/security-group.md
       - FloatingIP: resources/floating-ip.md

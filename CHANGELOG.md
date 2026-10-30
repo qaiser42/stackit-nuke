@@ -6,6 +6,10 @@ to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Removed
+- `Subnet` stub resource type: STACKIT IaaS has no subnet API. A network
+  carries its own IPv4/IPv6 prefixes and is removed by `Network`
+
 ## [0.0.7] - 2026-08-12
 
 ### Added
