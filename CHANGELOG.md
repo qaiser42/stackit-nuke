@@ -6,6 +6,28 @@ to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Added
+- New `MariaDBInstance` resource type: real list + delete via STACKIT
+  MariaDB v2 SDK. Deletion is asynchronous and polled by libnuke until gone
+- Docs page for `mariadb-instance`
+- Real list + delete via STACKIT IaaS v2 SDK for `ComputeSnapshot`:
+  snapshots in `DELETED` state are skipped, in-flight deletes not repeated
+- Real docs for `compute-snapshot` resource page
+- Real list + delete via STACKIT IaaS v2 SDK for `ComputeKeypair`: keypairs
+  belong to the authenticated identity, so they are listed once per run
+  (first project, first region)
+- `ListerOpts.ProjectIDs` so listers can detect the first project's scan
+- Real docs for `compute-keypair` resource page
+- Real list + delete via STACKIT Object Storage v2 SDK for
+  `ObjectStorageBucket`: non-empty buckets are emptied over S3 first, using
+  a temporary access key that is removed afterwards; projects without
+  Object Storage enabled list no buckets
+- Real docs for `object-storage-bucket` resource page
+
+### Changed
+- `ComputeVolume` now depends on `ComputeSnapshot`, so snapshots are removed
+  before the volumes they were taken from
+
 ### Removed
 - `Subnet` stub resource type: STACKIT IaaS has no subnet API. A network
   carries its own IPv4/IPv6 prefixes and is removed by `Network`

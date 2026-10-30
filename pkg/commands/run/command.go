@@ -126,6 +126,7 @@ func execute(ctx context.Context, c *cli.Command) error {
 				Opts: &stackit.ListerOpts{
 					OrganizationID: parsedConfig.OrganizationID,
 					ProjectID:      projectID,
+					ProjectIDs:     parsedConfig.ProjectIDs,
 					Region:         region,
 					Regions:        parsedConfig.Regions,
 					Credentials:    creds,
