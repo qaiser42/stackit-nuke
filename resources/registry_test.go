@@ -34,6 +34,7 @@ var expected = []string{
 	"DNSZone",
 	"NetworkInterface",
 	"GitInstance",
+	"MariaDBInstance",
 }
 
 func TestAllResourcesRegistered(t *testing.T) {
@@ -82,6 +83,7 @@ var realImpls = map[string]bool{
 	"PostgresFlexInstance": true,
 	"DNSZone":              true,
 	"GitInstance":          true,
+	"MariaDBInstance":      true,
 	"ComputeSnapshot":      true,
 }
 

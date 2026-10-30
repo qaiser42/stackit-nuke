@@ -82,6 +82,7 @@ nav:
       - LoadBalancer: resources/load-balancer.md
       - DNSZone: resources/dns-zone.md
       - GitInstance: resources/git-instance.md
+      - MariaDBInstance: resources/mariadb-instance.md
   - Development:
       - Contributing: contributing.md
       - Releases: releases.md
