@@ -7,8 +7,8 @@ require (
 	github.com/minio/minio-go/v7 v7.4.1
 	github.com/sirupsen/logrus v1.10.2
 	github.com/stackitcloud/stackit-sdk-go/core v0.27.1
-	github.com/stackitcloud/stackit-sdk-go/services/dns v0.25.0
-	github.com/stackitcloud/stackit-sdk-go/services/git v0.15.0
+	github.com/stackitcloud/stackit-sdk-go/services/dns v0.26.0
+	github.com/stackitcloud/stackit-sdk-go/services/git v0.16.0
 	github.com/stackitcloud/stackit-sdk-go/services/iaas v1.15.1
 	github.com/stackitcloud/stackit-sdk-go/services/mariadb v1.4.0
 	github.com/stackitcloud/stackit-sdk-go/services/objectstorage v1.13.0
