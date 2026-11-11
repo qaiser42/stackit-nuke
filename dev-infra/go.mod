@@ -1,6 +1,6 @@
 module stackit-nuke-dev-infra
 
-go 1.27.3
+go 1.27.4
 
 require (
 	github.com/pulumi/pulumi/sdk/v3 v3.274.1
